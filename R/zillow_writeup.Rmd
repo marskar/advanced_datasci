@@ -1,0 +1,56 @@
+---
+title: "Zillow Writeup"
+author: "Martin Skarzynski"
+date: "`r Sys.Date()`"
+knit: markdowntemplates::to_jupyter
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Zillow Prize Final Project
+-----------------------------
+This is an [R Markdown](http://rmarkdown.rstudio.com) document describing my plan for the Advanced Data Science I (140.711.01) final project.
+
+For my project, I will compete for the [Zillow prize](https://www.zillow.com/promo/Zillow-prize/) and write up my results.
+
+The data provided for the challenge are described at [Zillow prize site](https://www.zillow.com/promo/Zillow-prize/data).
+
+The challenge entails training a machine learning algorithm that can beat Zillow's proprietary Zestimate at predicting home values.
+
+First steps
+--------------
+1. Create Kaggle and GitHub accounts
+2. Create a GitHub repo for the Advanced Data Science I (140.711.01) final project.
+3. Download the data files and put in the repo
+4. Add the data files to .gitignore except for zillow_data_dictionary.xlsx
+5. Split the training data into training and test sets.
+6. Try different algorithms using the caret package and measure performance
+7. Select the top algorithm(s)
+8. Assess opportunities to improve performance of the top algorithm(s)
+
+
+Last week
+------------
+Last week I made a Kaggle account and download the data files. I added the data files to .gitignore except for zillow_data_dictionary.xlsx, which is a useful code book that explains the data.
+
+
+Today
+---------
+```{r get_date, echo=FALSE}
+todays_date<-Sys.Date()
+```
+
+Today, `r todays_date`, I am reading *Introduction to Machine Learning* by Ethem Alpaydın to prepare myself for what will no doubt be an intensive challenge.
+
+Next step
+---------
+My next task is to split the data into training and test sets.
+
+Specifically, I plan to split the data into two groups
+randomly, where $2/3$ of the data will be used for training and $1/3$ will be used for testing. I am not sure if I want to set up a cross-validation experiment. Perhaps a 10-fold or $5 * 2$ cross-validation.
+
+
+
+
