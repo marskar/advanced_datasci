@@ -16,3 +16,4 @@ packrat/lib*/
 # RStudio files
 .Rproj.user/
 .Rprofile
+.Rproj.user
