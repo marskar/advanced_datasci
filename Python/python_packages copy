@@ -1,0 +1,366 @@
+# packages in environment at /Users/marskar/anaconda3:
+#
+_license                  1.1                      py36_1  
+alabaster                 0.7.10                   py36_0  
+anaconda                  custom                   py36_0  
+anaconda-clean            1.1.0                    py36_0  
+anaconda-client           1.6.3                    py36_0  
+anaconda-navigator        1.6.2                    py36_0  
+anaconda-project          0.6.0                    py36_0  
+appnope                   0.1.0                    py36_0  
+appscript                 1.0.1                    py36_0  
+asn1crypto                0.22.0                   py36_0  
+astroid                   1.4.9                    py36_0  
+astropy                   1.3.2               np112py36_0  
+babel                     2.4.0                    py36_0  
+backports                 1.0                      py36_0  
+beautifulsoup4            4.6.0                    py36_0  
+bitarray                  0.8.1                    py36_0  
+blaze                     0.10.1                   py36_0  
+bleach                    2.0.0                     <pip>
+bleach                    1.5.0                    py36_0  
+bokeh                     0.12.5                   py36_1  
+boto                      2.46.1                   py36_0  
+bottleneck                1.2.1               np112py36_0  
+cairo                     1.14.8                        0  
+cffi                      1.10.0                   py36_0  
+chardet                   3.0.3                    py36_0  
+click                     6.7                      py36_0  
+cloudpickle               0.2.2                    py36_0  
+clyent                    1.2.2                    py36_0  
+colorama                  0.3.9                    py36_0  
+conda                     4.3.25                   py36_0  
+conda-env                 2.6.0                         0  
+configparser              3.5.0                     <pip>
+contextlib2               0.5.5                    py36_0  
+cryptography              1.8.1                    py36_0  
+curl                      7.52.1                        0  
+cycler                    0.10.0                   py36_0  
+cython                    0.25.2                   py36_0  
+cytoolz                   0.8.2                    py36_0  
+dask                      0.14.3                   py36_1  
+datashape                 0.5.4                    py36_0  
+decorator                 4.0.11                   py36_0  
+decorator                 4.1.2                     <pip>
+distributed               1.16.3                   py36_0  
+docutils                  0.13.1                   py36_0  
+entrypoints               0.2.2                    py36_1  
+entrypoints               0.2.3                     <pip>
+et_xmlfile                1.0.1                    py36_0  
+fastcache                 1.0.2                    py36_1  
+flask                     0.12.2                   py36_0  
+flask-cors                3.0.2                    py36_0  
+font-ttf-dejavu-sans-mono 2.37                          0  
+font-ttf-inconsolata      2.000                         0  
+font-ttf-source-code-pro  2.030                         0  
+font-ttf-ubuntu           0.83                          0  
+fontconfig                2.12.1                        3  
+fonts-continuum           1                             0  
+freetype                  2.5.5                         2  
+future                    0.16.0                    <pip>
+get_terminal_size         1.0.0                    py36_0  
+gettext                   0.19.8                        1  
+gevent                    1.2.1                    py36_0  
+glib                      2.50.2                        1  
+greenlet                  0.4.12                   py36_0  
+gsl                       2.2.1                         0  
+h5py                      2.7.0               np112py36_0  
+harfbuzz                  0.9.39                        2  
+hdf5                      1.8.17                        1  
+heapdict                  1.0.0                    py36_1  
+html5lib                  0.999999999               <pip>
+html5lib                  0.999                    py36_0  
+icu                       54.1                          0  
+idna                      2.5                      py36_0  
+imagesize                 0.7.1                    py36_0  
+ipykernel                 4.6.1                    py36_0  
+ipython                   6.1.0                    py36_0  
+ipython                   6.2.0                     <pip>
+ipython_genutils          0.2.0                    py36_0  
+ipywidgets                6.0.0                    py36_0  
+isort                     4.2.5                    py36_0  
+itsdangerous              0.24                     py36_0  
+jbig                      2.1                           0  
+jdcal                     1.3                      py36_0  
+jedi                      0.10.2                   py36_2  
+jedi                      0.11.0                    <pip>
+jinja2                    2.9.6                    py36_0  
+jpeg                      9b                            0  
+json-rpc                  1.10.3                    <pip>
+jsonschema                2.6.0                    py36_0  
+jupyter                   1.0.0                    py36_3  
+jupyter-client            5.1.0                     <pip>
+jupyter_client            5.0.1                    py36_0  
+jupyter_console           5.1.0                    py36_0  
+jupyter_core              4.3.0                    py36_0  
+lazy-object-proxy         1.2.2                    py36_0  
+libffi                    3.2.1                         1  
+libgcc                    4.8.5                         1  
+libiconv                  1.14                          0  
+libpng                    1.6.27                        0  
+libtiff                   4.0.6                         3  
+libxml2                   2.9.4                         0  
+libxslt                   1.1.29                        0  
+llvmlite                  0.18.0                   py36_0  
+locket                    0.2.0                    py36_1  
+lxml                      3.7.3                    py36_0  
+markupsafe                0.23                     py36_2  
+MarkupSafe                1.0                       <pip>
+matplotlib                2.0.2               np112py36_0  
+mccabe                    0.6.1                     <pip>
+mistune                   0.7.4                    py36_0  
+mkl                       2017.0.1                      0  
+mkl-service               1.1.2                    py36_3  
+mpmath                    0.19                     py36_1  
+msgpack-python            0.4.8                    py36_0  
+multipledispatch          0.4.9                    py36_0  
+navigator-updater         0.1.0                    py36_0  
+nbconvert                 5.1.1                    py36_0  
+nbconvert                 5.3.1                     <pip>
+nbformat                  4.4.0                     <pip>
+nbformat                  4.3.0                    py36_0  
+ncurses                   5.9                          10  
+networkx                  1.11                     py36_0  
+nltk                      3.2.3                    py36_0  
+nose                      1.3.7                    py36_1  
+notebook                  5.0.0                    py36_0  
+notebook                  5.1.0                     <pip>
+notedown                  1.5.0                     <pip>
+numba                     0.33.0              np112py36_0  
+numexpr                   2.6.2               np112py36_0  
+numpy                     1.12.1                   py36_0  
+numpydoc                  0.6.0                    py36_0  
+odo                       0.5.0                    py36_1  
+olefile                   0.44                     py36_0  
+openpyxl                  2.4.7                    py36_0  
+openssl                   1.0.2l                        0  
+packaging                 16.8                     py36_0  
+pandas                    0.20.1              np112py36_0  
+pandoc                    1.19.2.1                      0  
+pandoc-attributes         0.1.7                     <pip>
+pandocfilters             1.4.1                    py36_0  
+pandocfilters             1.4.2                     <pip>
+pango                     1.40.3                        1  
+parso                     0.1.0                     <pip>
+partd                     0.3.8                    py36_0  
+path.py                   10.3.1                   py36_0  
+pathlib2                  2.2.1                    py36_0  
+patsy                     0.4.1                    py36_0  
+pcre                      8.39                          1  
+pep8                      1.7.0                    py36_0  
+pexpect                   4.2.1                    py36_0  
+pickleshare               0.7.4                    py36_0  
+pillow                    4.1.1                    py36_0  
+pip                       9.0.1                    py36_1  
+pixman                    0.34.0                        0  
+pluggy                    0.5.2                     <pip>
+ply                       3.10                     py36_0  
+prompt-toolkit            1.0.15                    <pip>
+prompt_toolkit            1.0.14                   py36_0  
+psutil                    5.2.2                    py36_0  
+ptyprocess                0.5.1                    py36_0  
+py                        1.4.33                   py36_0  
+pycodestyle               2.3.1                     <pip>
+pycosat                   0.6.2                    py36_0  
+pycparser                 2.17                     py36_0  
+pycrypto                  2.6.1                    py36_6  
+pycurl                    7.43.0                   py36_2  
+pydocstyle                2.0.0                     <pip>
+pyflakes                  1.5.0                    py36_0  
+pygments                  2.2.0                    py36_0  
+pylint                    1.6.4                    py36_1  
+pyodbc                    4.0.16                   py36_0  
+pyopenssl                 17.0.0                   py36_0  
+pyparsing                 2.1.4                    py36_0  
+pyqt                      5.6.0                    py36_1  
+pytables                  3.3.0               np112py36_0  
+pytest                    3.0.7                    py36_0  
+python                    3.6.2                         0  
+python-dateutil           2.6.0                    py36_0  
+python-dateutil           2.6.1                     <pip>
+python-language-server    0.6.0                     <pip>
+python.app                1.2                      py36_4  
+pytz                      2017.2                   py36_0  
+pywavelets                0.5.2               np112py36_0  
+pyyaml                    3.12                     py36_0  
+pyzmq                     16.0.2                   py36_0  
+qt                        5.6.2                         2  
+qtawesome                 0.4.4                    py36_0  
+qtconsole                 4.3.0                    py36_0  
+qtpy                      1.2.1                    py36_0  
+r-assertthat              0.2.0                  r3.4.1_0    r
+r-backports               1.1.0                  r3.4.1_0    r
+r-base                    3.4.1                         0    r
+r-base64enc               0.1_3                  r3.4.1_0    r
+r-bh                      1.62.0_1               r3.4.1_0    r
+r-bindr                   0.1                    r3.4.1_0    r
+r-bindrcpp                0.2                    r3.4.1_0    r
+r-bitops                  1.0_6                  r3.4.1_2    r
+r-boot                    1.3_19                 r3.4.1_0    r
+r-broom                   0.4.2                  r3.4.1_0    r
+r-car                     2.1_4                  r3.4.1_0    r
+r-caret                   6.0_76                 r3.4.1_0    r
+r-catools                 1.17.1                 r3.4.1_2    r
+r-cellranger              1.1.0                  r3.4.1_0    r
+r-class                   7.3_14                 r3.4.1_0    r
+r-cluster                 2.0.6                  r3.4.1_0    r
+r-codetools               0.2_15                 r3.4.1_0    r
+r-colorspace              1.3_2                  r3.4.1_0    r
+r-crayon                  1.3.2                  r3.4.1_0    r
+r-curl                    2.6                    r3.4.1_0    r
+r-data.table              1.10.4                 r3.4.1_0    r
+r-dbi                     0.6_1                  r3.4.1_0    r
+r-dichromat               2.0_0                  r3.4.1_2    r
+r-digest                  0.6.12                 r3.4.1_0    r
+r-dplyr                   0.7.0                  r3.4.1_0    r
+r-essentials              1.6.0                  r3.4.1_0    r
+r-evaluate                0.10                   r3.4.1_0    r
+r-forcats                 0.2.0                  r3.4.1_0    r
+r-foreach                 1.4.3                  r3.4.1_0    r
+r-foreign                 0.8_68                 r3.4.1_0    r
+r-formatr                 1.5                    r3.4.1_0    r
+r-ggplot2                 2.2.1                  r3.4.1_0    r
+r-gistr                   0.4.0                  r3.4.1_0    r
+r-glmnet                  2.0_10                 r3.4.1_0    r
+r-glue                    1.1.1                  r3.4.1_0    r
+r-gtable                  0.2.0                  r3.4.1_0    r
+r-haven                   1.0.0                  r3.4.1_0    r
+r-hexbin                  1.27.1                 r3.4.1_0    r
+r-highr                   0.6                    r3.4.1_0    r
+r-hms                     0.3                    r3.4.1_0    r
+r-htmltools               0.3.6                  r3.4.1_0    r
+r-htmlwidgets             0.8                    r3.4.1_1    r
+r-httpuv                  1.3.3                  r3.4.1_0    r
+r-httr                    1.2.1                  r3.4.1_0    r
+r-irdisplay               0.4.4                  r3.4.1_0    r
+r-irkernel                0.7.1                  r3.4.1_0    r
+r-iterators               1.0.8                  r3.4.1_0    r
+r-jsonlite                1.5                    r3.4.1_0    r
+r-kernsmooth              2.23_15                r3.4.1_0    r
+r-knitr                   1.16                   r3.4.1_0    r
+r-labeling                0.3                    r3.4.1_2    r
+r-lattice                 0.20_35                r3.4.1_0    r
+r-lazyeval                0.2.0                  r3.4.1_0    r
+r-lme4                    1.1_13                 r3.4.1_0    r
+r-lubridate               1.6.0                  r3.4.1_0    r
+r-magrittr                1.5                    r3.4.1_2    r
+r-maps                    3.2.0                  r3.4.1_0    r
+r-markdown                0.8                    r3.4.1_0    r
+r-mass                    7.3_47                 r3.4.1_0    r
+r-matrix                  1.2_10                 r3.4.1_0    r
+r-matrixmodels            0.4_1                  r3.4.1_0    r
+r-mgcv                    1.8_17                 r3.4.1_0    r
+r-mime                    0.5                    r3.4.1_0    r
+r-minqa                   1.2.4                  r3.4.1_2    r
+r-mnormt                  1.5_5                  r3.4.1_0    r
+r-modelmetrics            1.1.0                  r3.4.1_0    r
+r-modelr                  0.1.0                  r3.4.1_0    r
+r-munsell                 0.4.3                  r3.4.1_0    r
+r-nlme                    3.1_131                r3.4.1_0    r
+r-nloptr                  1.0.4                  r3.4.1_2    r
+r-nnet                    7.3_12                 r3.4.1_0    r
+r-openssl                 0.9.6                  r3.4.1_0    r
+r-packrat                 0.4.8_1                r3.4.1_0  
+r-pbdzmq                  0.2_6                  r3.4.1_0    r
+r-pbkrtest                0.4_7                  r3.4.1_0    r
+r-pkgconfig               2.0.1                  r3.4.1_0    r
+r-pki                     0.1_3                  r3.4.1_0  
+r-plogr                   0.1_1                  r3.4.1_0    r
+r-plyr                    1.8.4                  r3.4.1_0    r
+r-pryr                    0.1.2                  r3.4.1_0    r
+r-psych                   1.7.5                  r3.4.1_0    r
+r-purrr                   0.2.2.2                r3.4.1_0    r
+r-quantmod                0.4_9                  r3.4.1_0    r
+r-quantreg                5.33                   r3.4.1_0    r
+r-r6                      2.2.1                  r3.4.1_0    r
+r-randomforest            4.6_12                 r3.4.1_0    r
+r-rbokeh                  0.5.0                  r3.4.1_0    r
+r-rcolorbrewer            1.1_2                  r3.4.1_3    r
+r-rcpp                    0.12.11                r3.4.1_0    r
+r-rcppeigen               0.3.3.3.0              r3.4.1_0    r
+r-rcurl                   1.95_4.8               r3.4.1_0  
+r-readr                   1.1.1                  r3.4.1_0    r
+r-readxl                  1.0.0                  r3.4.1_0    r
+r-recommended             3.4.1                  r3.4.1_0    r
+r-rematch                 1.0.1                  r3.4.1_0    r
+r-repr                    0.10                   r3.4.1_0    r
+r-reshape2                1.4.2                  r3.4.1_0    r
+r-rjsonio                 1.3_0                  r3.4.1_2  
+r-rlang                   0.1.1                  r3.4.1_0    r
+r-rmarkdown               1.5                    r3.4.1_0    r
+r-rpart                   4.1_11                 r3.4.1_0    r
+r-rprojroot               1.2                    r3.4.1_0    r
+r-rsconnect               0.8                    r3.4.1_0  
+r-rstudioapi              0.6                    r3.4.1_0  
+r-rvest                   0.3.2                  r3.4.1_0    r
+r-scales                  0.4.1                  r3.4.1_0    r
+r-selectr                 0.3_1                  r3.4.1_0    r
+r-shiny                   1.0.3                  r3.4.1_0    r
+r-sourcetools             0.1.6                  r3.4.1_0    r
+r-sparsem                 1.77                   r3.4.1_0    r
+r-spatial                 7.3_11                 r3.4.1_0    r
+r-stringi                 1.1.5                  r3.4.1_0    r
+r-stringr                 1.2.0                  r3.4.1_0    r
+r-survival                2.41_3                 r3.4.1_0    r
+r-tibble                  1.3.3                  r3.4.1_0    r
+r-tidyr                   0.6.3                  r3.4.1_0    r
+r-tidyverse               1.1.1                  r3.4.1_0    r
+r-ttr                     0.23_1                 r3.4.1_0    r
+r-uuid                    0.1_2                  r3.4.1_0    r
+r-xml2                    1.1.1                  r3.4.1_0    r
+r-xtable                  1.8_2                  r3.4.1_0    r
+r-xts                     0.9_7                  r3.4.1_2    r
+r-yaml                    2.1.14                 r3.4.1_0    r
+r-zoo                     1.8_0                  r3.4.1_0    r
+readline                  6.2                           2  
+requests                  2.14.2                   py36_0  
+rope                      0.9.4                    py36_1  
+rstudio                   1.0.153                       1  
+ruamel_yaml               0.11.14                  py36_1  
+scikit-image              0.13.0              np112py36_0  
+scikit-learn              0.18.1              np112py36_1  
+scipy                     0.19.0              np112py36_0  
+seaborn                   0.7.1                    py36_0  
+setuptools                27.2.0                   py36_0  
+setuptools                36.5.0                    <pip>
+simplegeneric             0.8.1                    py36_1  
+singledispatch            3.4.0.3                  py36_0  
+sip                       4.18                     py36_0  
+six                       1.11.0                    <pip>
+six                       1.10.0                   py36_0  
+snowballstemmer           1.2.1                    py36_0  
+sortedcollections         0.5.3                    py36_0  
+sortedcontainers          1.5.7                    py36_0  
+sphinx                    1.5.6                    py36_0  
+spyder                    3.1.4                    py36_0  
+sqlalchemy                1.1.9                    py36_0  
+sqlite                    3.13.0                        0  
+statsmodels               0.8.0               np112py36_0  
+sympy                     1.0                      py36_0  
+tblib                     1.3.2                    py36_0  
+terminado                 0.6                      py36_0  
+testpath                  0.3                      py36_0  
+testpath                  0.3.1                     <pip>
+tk                        8.5.18                        0  
+toolz                     0.8.2                    py36_0  
+tornado                   4.5.2                     <pip>
+tornado                   4.5.1                    py36_0  
+traitlets                 4.3.2                    py36_0  
+unicodecsv                0.14.1                   py36_0  
+unixodbc                  2.3.4                         0  
+wcwidth                   0.1.7                    py36_0  
+webencodings              0.5.1                     <pip>
+werkzeug                  0.12.2                   py36_0  
+wheel                     0.29.0                   py36_0  
+widgetsnbextension        2.0.0                    py36_0  
+wrapt                     1.10.10                  py36_0  
+xlrd                      1.0.0                    py36_0  
+xlsxwriter                0.9.6                    py36_0  
+xlwings                   0.10.4                   py36_0  
+xlwt                      1.2.0                    py36_0  
+xz                        5.2.2                         1  
+yaml                      0.1.6                         0  
+yapf                      0.18.0                    <pip>
+zeromq                    4.1.3                         0  
+zict                      0.1.2                    py36_0  
+zlib                      1.2.8                         3  
