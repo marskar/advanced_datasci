@@ -39,6 +39,19 @@ print(train.shape)
     (90275, 3)
 
 
+
+```python
+plt.figure(figsize=(8,6))
+plt.scatter(range(train.shape[0]), np.sort(train.logerror.values))
+plt.xlabel('index', fontsize=12)
+plt.ylabel('logerror', fontsize=12)
+plt.show()
+```
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_6_0.png)
+
+
 Distribution of Target Variable:
 
 
@@ -60,7 +73,7 @@ plt.show()
 ```
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_8_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_9_0.png)
 
 
 Log-errors are close to normally distributed around a 0 mean, but with a slightly positive skew. There are also a considerable number of outliers, I will explore whether removing these improves model performance.
@@ -127,29 +140,117 @@ print(prop.shape)
     (2985217, 58)
 
 
+# Analyse the Dimensions of our Datasets
+
 
 ```python
-nans = prop.drop('parcelid', axis=1).isnull().sum()
-nans.sort_values(ascending=True, inplace=True)
-nans = nans / prop.shape[0]
-#print(nans)
+     print("Training Size:" + str(train.shape))
+     print("Property Size:" + str(prop.shape))
+```
+
+    Training Size:(90275, 61)
+    Property Size:(2985217, 58)
+
+
+
+```python
+### ... check for NaNs
+nan = prop.isnull().sum()
+nan
+```
+
+
+
+
+    parcelid                              0
+    airconditioningtypeid           2173698
+    architecturalstyletypeid        2979156
+    basementsqft                    2983589
+    bathroomcnt                       11462
+    bedroomcnt                        11450
+    buildingclasstypeid             2972588
+    buildingqualitytypeid           1046729
+    calculatedbathnbr                128912
+    decktypeid                      2968121
+    finishedfloor1squarefeet        2782500
+    calculatedfinishedsquarefeet      55565
+    finishedsquarefeet12             276033
+    finishedsquarefeet13            2977545
+    finishedsquarefeet15            2794419
+    finishedsquarefeet50            2782500
+    finishedsquarefeet6             2963216
+    fips                              11437
+    fireplacecnt                    2672580
+    fullbathcnt                      128912
+    garagecarcnt                    2101950
+    garagetotalsqft                 2101950
+    hashottuborspa                  2916203
+    heatingorsystemtypeid           1178816
+    latitude                          11437
+    longitude                         11437
+    lotsizesquarefeet                276099
+    poolcnt                         2467683
+    poolsizesum                     2957257
+    pooltypeid10                    2948278
+    pooltypeid2                     2953142
+    pooltypeid7                     2499758
+    propertycountylandusecode         12277
+    propertylandusetypeid             11437
+    propertyzoningdesc              1006588
+    rawcensustractandblock            11437
+    regionidcity                      62845
+    regionidcounty                    11437
+    regionidneighborhood            1828815
+    regionidzip                       13980
+    roomcnt                           11475
+    storytypeid                     2983593
+    threequarterbathnbr             2673586
+    typeconstructiontypeid          2978470
+    unitcnt                         1007727
+    yardbuildingsqft17              2904862
+    yardbuildingsqft26              2982570
+    yearbuilt                         59928
+    numberofstories                 2303148
+    fireplaceflag                   2980054
+    structuretaxvaluedollarcnt        54982
+    taxvaluedollarcnt                 42550
+    assessmentyear                    11439
+    landtaxvaluedollarcnt             67733
+    taxamount                         31250
+    taxdelinquencyflag              2928755
+    taxdelinquencyyear              2928753
+    censustractandblock               75126
+    dtype: int64
+
+
+
+
+```python
+### Plotting NaN counts
+nan_sorted = nan.sort_values(ascending=False).to_frame().reset_index()
+nan_sorted.columns = ['Column', 'Number of NaNs']
 ```
 
 
 ```python
-plt.figure(figsize=(14, 5))
-plt.bar(range(len(nans.index)), nans.values)
-plt.xticks(range(len(nans.index)), nans.index.values, rotation=90)
+import seaborn as sns
+```
+
+
+```python
+fig, ax = plt.subplots(figsize=(12, 25))
+sns.barplot(x="Number of NaNs", y="Column", data=nan_sorted, color='Blue', ax=ax)
+ax.set(xlabel="Number of NaNs", ylabel="", title="Total Number of NaNs in each column")
 plt.show()
 ```
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_12_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_17_0.png)
 
 
 There are several columns which have a very high proportion of missing values. It may be worth analysing these more closely.
 
-Monthly Effects on Target Variable
+### Monthly Effects on Target Variable
 
 
 ```python
@@ -214,11 +315,11 @@ plt.show()
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_18_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_24_1.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_18_2.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_24_2.png)
 
 
 This datase contains more transactions occuring in the Spring and Summer months, although it must be noted that some transactions from October, November and December have been removed to form the competition's test set (thanks to nonrandom for pointing this out).
@@ -371,11 +472,11 @@ print(importance.head())
 ```
 
                        features  importance
-    0         transaction_month    0.040122
-    1     airconditioningtypeid    0.006390
-    2  architecturalstyletypeid    0.000250
-    3              basementsqft    0.000293
-    4               bathroomcnt    0.007432
+    0         transaction_month    0.039308
+    1     airconditioningtypeid    0.006998
+    2  architecturalstyletypeid    0.000359
+    3              basementsqft    0.000310
+    4               bathroomcnt    0.007828
 
 
 
@@ -388,11 +489,11 @@ print(importance.head())
 
     ------------
                           features  importance
-    50  structuretaxvaluedollarcnt    0.085142
-    25                   longitude    0.073641
-    24                    latitude    0.073609
-    54                   taxamount    0.072549
-    53       landtaxvaluedollarcnt    0.068523
+    50  structuretaxvaluedollarcnt    0.083723
+    25                   longitude    0.077608
+    54                   taxamount    0.075427
+    24                    latitude    0.074305
+    26           lotsizesquarefeet    0.071182
 
 
 
@@ -407,7 +508,7 @@ plt.show()
 ```
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_25_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_31_0.png)
 
 
 Here we see that the greatest importance in predicting the log-error comes from features involving taxes and geographical location of the property. Notably, the 'transaction_month' feature that was engineered earlier was the 12th most important feature. 
@@ -423,19 +524,10 @@ test= test.rename(columns={'ParcelId': 'parcelid'})
 
     NameError                                 Traceback (most recent call last)
 
-    <ipython-input-30-1e807e847848> in <module>()
+    <ipython-input-20-1e807e847848> in <module>()
     ----> 1 test= test.rename(columns={'ParcelId': 'parcelid'})
           2 #To make it easier for merging datasets on same column_id later
 
 
     NameError: name 'test' is not defined
 
-
-# Analyse the Dimensions of our Datasets
-
-
-```python
-     print("Training Size:" + str(train.shape))
-     print("Property Size:" + str(prop.shape))
-     print("Sample Size:" + str(test.shape))
-```
