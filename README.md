@@ -7,7 +7,12 @@ For my project, I will compete for the [Zillow prize](https://www.zillow.com/pro
 The data provided for the challenge are described at [Zillow prize site](https://www.zillow.com/promo/Zillow-prize/data).
 
 ## Primary objective
-My **primary objective** is to describe my efforts to put together a decent entry in the Zillow challenge. The emphasis here will be on the *process* and exploratory data analysis.
+My **primary objective** is to describe my efforts to put together a half-decent entry in the Zillow challenge. The emphasis here will be on the *process* and exploratory data analysis.
+
+## Reproducibility
+
+I spent a great deal of time trying to figure how to 
+
 
 ## Secondary objectives
 After signing up for the challenge, I decided to try things out in **BOTH** R and Python using the [Rpy2](https://rpy2.readthedocs.io) package in the [Jupyter Notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html) environment. This is a personal preference, but it prompted me to outline several secondary objectives:
@@ -37,7 +42,7 @@ The challenge entails training a machine learning algorithm to predict the log e
 
 The metric by which submissions are evaluated is the Mean Absolute Error between the predicted log error and the actual log error. The log error is defined as
 
-$logerror=log(Zestimate)−log(SalePrice)$
+$logerror=log(Zestimate) - log(SalePrice)$
 
 Zillow Prize Timeline
 ----------------------------
