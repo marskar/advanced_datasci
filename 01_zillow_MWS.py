@@ -1,12 +1,6 @@
 
 # coding: utf-8
 
-# This Python 3 environment comes with many helpful analytics libraries installed
-# It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
-# For example, here's several helpful packages to load in 
-
-# Import Libraries and Data:
-
 # In[22]:
 
 
@@ -19,6 +13,12 @@ print("This report was generated on", d, "at", t)
 
 # # Zillow Prize Data Analysis Project
 
+# This Python 3 environment comes with many helpful analytics libraries installed
+# It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python (a modified version of this docker image will be made available as part of my project to ensure reproducibility).
+# For example, here's several helpful packages to load in 
+
+# Import Libraries and Data:
+
 # In[1]:
 
 
@@ -29,20 +29,175 @@ import datetime as dt
 import seaborn as sns
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestRegressor
+get_ipython().run_line_magic('matplotlib', 'inline')
+### Seaborn style
+sns.set_style("whitegrid")
 
 
 # Input data files are available in the "../input/" directory.
 
 # Any results I write to the current directory are saved as output.
 
-# In[2]:
+# In[3]:
 
 
-#load training file
-train = pd.read_csv("../input/train_2016_v2.csv", parse_dates=["transactiondate"])
-print(train.head())
-print('---------------------')
-print(train.shape)
+## Dictionary of feature dtypes
+ints = ['parcelid']
+
+floats = ['basementsqft', 'bathroomcnt', 'bedroomcnt', 'calculatedbathnbr', 'finishedfloor1squarefeet', 
+          'calculatedfinishedsquarefeet', 'finishedsquarefeet12', 'finishedsquarefeet13',
+          'finishedsquarefeet15', 'finishedsquarefeet50', 'finishedsquarefeet6', 'fireplacecnt',
+          'fullbathcnt', 'garagecarcnt', 'garagetotalsqft', 'latitude', 'longitude',
+          'lotsizesquarefeet', 'poolcnt', 'poolsizesum', 'roomcnt', 'threequarterbathnbr', 'unitcnt',
+          'yardbuildingsqft17', 'yardbuildingsqft26', 'yearbuilt', 'numberofstories',
+          'structuretaxvaluedollarcnt', 'taxvaluedollarcnt', 'assessmentyear',
+          'landtaxvaluedollarcnt', 'taxamount', 'taxdelinquencyyear']
+
+objects = ['airconditioningtypeid', 'architecturalstyletypeid', 'buildingclasstypeid',
+           'buildingqualitytypeid', 'decktypeid', 'fips', 'hashottuborspa', 'heatingorsystemtypeid',
+           'pooltypeid10', 'pooltypeid2', 'pooltypeid7', 'propertycountylandusecode',
+           'propertylandusetypeid', 'propertyzoningdesc', 'rawcensustractandblock', 'regionidcity',
+           'regionidcounty', 'regionidneighborhood', 'regionidzip', 'storytypeid',
+           'typeconstructiontypeid', 'fireplaceflag', 'taxdelinquencyflag', 'censustractandblock']
+
+feature_dtypes = {col: col_type for type_list, col_type in zip([ints, floats, objects],
+                                                               ['int64', 'float64', 'object']) 
+                                  for col in type_list}
+
+
+# In[5]:
+
+
+### Let's import our data
+data = pd.read_csv('./input/properties_2016.csv' , dtype = feature_dtypes)
+### and test if everything OK
+data.head()
+
+
+# In[6]:
+
+
+continuous = ['basementsqft', 'finishedfloor1squarefeet', 'calculatedfinishedsquarefeet', 
+              'finishedsquarefeet12', 'finishedsquarefeet13', 'finishedsquarefeet15',
+              'finishedsquarefeet50', 'finishedsquarefeet6', 'garagetotalsqft', 'latitude',
+              'longitude', 'lotsizesquarefeet', 'poolsizesum',  'yardbuildingsqft17',
+              'yardbuildingsqft26', 'yearbuilt', 'structuretaxvaluedollarcnt', 'taxvaluedollarcnt',
+              'landtaxvaluedollarcnt', 'taxamount']
+
+discrete = ['bathroomcnt', 'bedroomcnt', 'calculatedbathnbr', 'fireplacecnt', 'fullbathcnt',
+            'garagecarcnt', 'poolcnt', 'roomcnt', 'threequarterbathnbr', 'unitcnt',
+            'numberofstories', 'assessmentyear', 'taxdelinquencyyear']
+
+
+# In[10]:
+
+
+### Continuous variable plots
+for col in continuous:
+    values = data[col].dropna()
+    lower = np.percentile(values, 1)
+    upper = np.percentile(values, 99)
+    fig = plt.figure(figsize=(18,9));
+    sns.distplot(values[(values>lower) & (values<upper)], color='Blue', ax = plt.subplot(121));
+    sns.boxplot(y=values, color='Blue', ax = plt.subplot(122));
+    plt.suptitle(col, fontsize=16)       
+
+
+# In[9]:
+
+
+### Discrete variable plots
+NanAsZero = ['fireplacecnt', 'poolcnt', 'threequarterbathnbr']
+for col in discrete:
+    if col in NanAsZero:
+        data[col].fillna(0, inplace=True)
+    values = data[col].dropna()   
+    fig = plt.figure(figsize=(18,9));
+    sns.countplot(x=values, color='Blue', ax = plt.subplot(121));
+    sns.boxplot(y=values, color='Blue', ax = plt.subplot(122));
+    plt.suptitle(col, fontsize=16)
+
+
+# In[14]:
+
+
+### Reading train file
+errors = pd.read_csv('./input/train_2016_v2.csv', parse_dates=['transactiondate'])
+errors.head()
+
+
+# In[15]:
+
+
+#### Merging tables
+data_sold = data.merge(errors, how='inner', on='parcelid')
+data_sold.head()
+
+
+# In[16]:
+
+
+### Creating 5 equal size logerror bins 
+data_sold['logerror_bin'] = pd.qcut(data_sold['logerror'], 5, 
+                                    labels=['Large Negative Error', 'Medium Negative Error',
+                                            'Small Error', 'Medium Positive Error',
+                                            'Large Positive Error'])
+print(data_sold.logerror_bin.value_counts())
+
+
+# In[17]:
+
+
+### Continuous variable vs logerror plots
+for col in continuous:     
+    fig = plt.figure(figsize=(18,9));
+    sns.barplot(x='logerror_bin', y=col, data=data_sold, ax = plt.subplot(121),
+                order=['Large Negative Error', 'Medium Negative Error','Small Error',
+                       'Medium Positive Error', 'Large Positive Error']);
+    plt.xlabel('LogError Bin');
+    plt.ylabel('Average {}'.format(col));
+    sns.regplot(x='logerror', y=col, data=data_sold, color='Sienna', ax = plt.subplot(122));
+    plt.suptitle('LogError vs {}'.format(col), fontsize=16)   
+
+
+# ## Supplemental figures
+
+# In[22]:
+
+
+train_df = pd.read_csv("./input/train_2016_v2.csv", parse_dates=["transactiondate"])
+train_df.shape
+
+
+# In[27]:
+
+
+train_y = train_df['logerror'].values
+cat_cols = ["hashottuborspa", "propertycountylandusecode", "propertyzoningdesc", "fireplaceflag", "taxdelinquencyflag"]
+
+from sklearn import ensemble
+
+
+# In[28]:
+
+
+import xgboost as xgb
+xgb_params = {
+    'eta': 0.05,
+    'max_depth': 8,
+    'subsample': 0.7,
+    'colsample_bytree': 0.7,
+    'objective': 'reg:linear',
+    'silent': 1,
+    'seed' : 0
+}
+dtrain = xgb.DMatrix(train_df, train_y, feature_names=train_df.columns.values)
+model = xgb.train(dict(xgb_params, silent=0), dtrain, num_boost_round=50)
+
+# plot the important features #
+fig, ax = plt.subplots(figsize=(12,18))
+xgb.plot_importance(model, max_num_features=50, height=0.8, ax=ax)
+plt.show()
 
 
 # In[3]:
