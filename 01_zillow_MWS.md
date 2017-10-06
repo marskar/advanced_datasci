@@ -651,43 +651,29 @@ Any results I write to the current directory are saved as output.
 
 
 
-    ---------------------------------------------------------------------------
-
-    ValueError                                Traceback (most recent call last)
-
-    <ipython-input-28-a12ee0bf513a> in <module>()
-          9     'seed' : 0
-         10 }
-    ---> 11 dtrain = xgb.DMatrix(train_df, train_y, feature_names=train_df.columns.values)
-         12 model = xgb.train(dict(xgb_params, silent=0), dtrain, num_boost_round=50)
-         13 
-
-
-    ~/anaconda3/lib/python3.6/site-packages/xgboost/core.py in __init__(self, data, label, missing, weight, silent, feature_names, feature_types)
-        253         data, feature_names, feature_types = _maybe_pandas_data(data,
-        254                                                                 feature_names,
-    --> 255                                                                 feature_types)
-        256         label = _maybe_pandas_label(label)
-        257 
-
-
-    ~/anaconda3/lib/python3.6/site-packages/xgboost/core.py in _maybe_pandas_data(data, feature_names, feature_types)
-        179         msg = """DataFrame.dtypes for data must be int, float or bool.
-        180 Did not expect the data types in fields """
-    --> 181         raise ValueError(msg + ', '.join(bad_fields))
-        182 
-        183     if feature_names is None:
-
-
-    ValueError: DataFrame.dtypes for data must be int, float or bool.
-    Did not expect the data types in fields transactiondate
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_20_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_0.png)
 
 
 Distribution of Target Variable:
+
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:3: DeprecationWarning: 
+    .ix is deprecated. Please use
+    .loc for label based indexing or
+    .iloc for positional indexing
+    
+    See the documentation here:
+    http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
+      This is separate from the ipykernel package so we can avoid doing imports until
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py:179: SettingWithCopyWarning: 
+    A value is trying to be set on a copy of a slice from a DataFrame
+    
+    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+      self._setitem_with_indexer(indexer, value)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_21_1.png)
+
 
 
 ![png](01_zillow_MWS_files/01_zillow_MWS_23_0.png)
@@ -746,6 +732,1146 @@ Proportion of Missing Values in Each Column:
     [5 rows x 58 columns]
     ---------------------
     (2985217, 58)
+
+
+
+
+
+    1    90026
+    2      123
+    3        1
+    Name: parcelid, dtype: int64
+
+
+
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/IPython/core/interactiveshell.py:2728: DtypeWarning: Columns (22,32,34,49,55) have mixed types. Specify dtype option on import or set low_memory=False.
+      interactivity=interactivity, compiler=compiler, result=result)
+
+
+
+
+
+    (2985217, 58)
+
+
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>parcelid</th>
+      <th>airconditioningtypeid</th>
+      <th>architecturalstyletypeid</th>
+      <th>basementsqft</th>
+      <th>bathroomcnt</th>
+      <th>bedroomcnt</th>
+      <th>buildingclasstypeid</th>
+      <th>buildingqualitytypeid</th>
+      <th>calculatedbathnbr</th>
+      <th>decktypeid</th>
+      <th>...</th>
+      <th>numberofstories</th>
+      <th>fireplaceflag</th>
+      <th>structuretaxvaluedollarcnt</th>
+      <th>taxvaluedollarcnt</th>
+      <th>assessmentyear</th>
+      <th>landtaxvaluedollarcnt</th>
+      <th>taxamount</th>
+      <th>taxdelinquencyflag</th>
+      <th>taxdelinquencyyear</th>
+      <th>censustractandblock</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10754147</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.0</td>
+      <td>2015.0</td>
+      <td>9.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10759547</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>27516.0</td>
+      <td>2015.0</td>
+      <td>27516.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10843547</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>650756.0</td>
+      <td>1413387.0</td>
+      <td>2015.0</td>
+      <td>762631.0</td>
+      <td>20800.37</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10859147</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>571346.0</td>
+      <td>1156834.0</td>
+      <td>2015.0</td>
+      <td>585488.0</td>
+      <td>14557.57</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10879947</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>193796.0</td>
+      <td>433491.0</td>
+      <td>2015.0</td>
+      <td>239695.0</td>
+      <td>5725.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 58 columns</p>
+</div>
+
+
+
+
+
+
+    (90275, 3)
+
+
+
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:3: DeprecationWarning: 
+    .ix is deprecated. Please use
+    .loc for label based indexing or
+    .iloc for positional indexing
+    
+    See the documentation here:
+    http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
+      This is separate from the ipykernel package so we can avoid doing imports until
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_31_1.png)
+
+
+
+    <matplotlib.figure.Figure at 0x1101805c0>
+
+
+    Exception ignored in: <bound method DMatrix.__del__ of <xgboost.core.DMatrix object at 0x10fa6cc50>>
+    Traceback (most recent call last):
+      File "/Users/marskar/anaconda3/lib/python3.6/site-packages/xgboost/core.py", line 324, in __del__
+        _check_call(_LIB.XGDMatrixFree(self.handle))
+    AttributeError: 'DMatrix' object has no attribute 'handle'
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_32_2.png)
+
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>parcelid</th>
+      <th>logerror</th>
+      <th>transactiondate</th>
+      <th>airconditioningtypeid</th>
+      <th>architecturalstyletypeid</th>
+      <th>basementsqft</th>
+      <th>bathroomcnt</th>
+      <th>bedroomcnt</th>
+      <th>buildingclasstypeid</th>
+      <th>buildingqualitytypeid</th>
+      <th>...</th>
+      <th>numberofstories</th>
+      <th>fireplaceflag</th>
+      <th>structuretaxvaluedollarcnt</th>
+      <th>taxvaluedollarcnt</th>
+      <th>assessmentyear</th>
+      <th>landtaxvaluedollarcnt</th>
+      <th>taxamount</th>
+      <th>taxdelinquencyflag</th>
+      <th>taxdelinquencyyear</th>
+      <th>censustractandblock</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>11016594</td>
+      <td>0.0276</td>
+      <td>2016-01-01</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>4.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>122754.0</td>
+      <td>360170.0</td>
+      <td>2015.0</td>
+      <td>237416.0</td>
+      <td>6735.88</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.037107e+13</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>14366692</td>
+      <td>-0.1684</td>
+      <td>2016-01-01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.5</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>346458.0</td>
+      <td>585529.0</td>
+      <td>2015.0</td>
+      <td>239071.0</td>
+      <td>10153.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12098116</td>
+      <td>-0.0040</td>
+      <td>2016-01-01</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>4.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>61994.0</td>
+      <td>119906.0</td>
+      <td>2015.0</td>
+      <td>57912.0</td>
+      <td>11484.48</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.037464e+13</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>12643413</td>
+      <td>0.0218</td>
+      <td>2016-01-02</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>4.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>171518.0</td>
+      <td>244880.0</td>
+      <td>2015.0</td>
+      <td>73362.0</td>
+      <td>3048.74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.037296e+13</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>14432541</td>
+      <td>-0.0050</td>
+      <td>2016-01-02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.5</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>169574.0</td>
+      <td>434551.0</td>
+      <td>2015.0</td>
+      <td>264977.0</td>
+      <td>5488.96</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.059042e+13</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 60 columns</p>
+</div>
+
+
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Count</th>
+      <th>Column Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>parcelid</td>
+      <td>int64</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>logerror</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>transactiondate</td>
+      <td>datetime64[ns]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>airconditioningtypeid</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>architecturalstyletypeid</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>basementsqft</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>bathroomcnt</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>bedroomcnt</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>buildingclasstypeid</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>buildingqualitytypeid</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>calculatedbathnbr</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>decktypeid</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>finishedfloor1squarefeet</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>calculatedfinishedsquarefeet</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>finishedsquarefeet12</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>finishedsquarefeet13</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>finishedsquarefeet15</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>finishedsquarefeet50</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>finishedsquarefeet6</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>fips</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>fireplacecnt</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>fullbathcnt</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>garagecarcnt</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>garagetotalsqft</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>hashottuborspa</td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>heatingorsystemtypeid</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>latitude</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>longitude</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>lotsizesquarefeet</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>poolcnt</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>poolsizesum</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>pooltypeid10</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>pooltypeid2</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>pooltypeid7</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>propertycountylandusecode</td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>propertylandusetypeid</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>propertyzoningdesc</td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>rawcensustractandblock</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>regionidcity</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>regionidcounty</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>regionidneighborhood</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>regionidzip</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>roomcnt</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>storytypeid</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>threequarterbathnbr</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>typeconstructiontypeid</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>unitcnt</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>yardbuildingsqft17</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>yardbuildingsqft26</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>yearbuilt</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>numberofstories</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>fireplaceflag</td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>structuretaxvaluedollarcnt</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>taxvaluedollarcnt</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>assessmentyear</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>landtaxvaluedollarcnt</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>taxamount</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>taxdelinquencyflag</td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>taxdelinquencyyear</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>censustractandblock</td>
+      <td>float64</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Column Type</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>int64</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>float64</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>datetime64[ns]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>object</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:4: DeprecationWarning: 
+    .ix is deprecated. Please use
+    .loc for label based indexing or
+    .iloc for positional indexing
+    
+    See the documentation here:
+    http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
+      after removing the cwd from sys.path.
+
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>column_name</th>
+      <th>missing_count</th>
+      <th>missing_ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>basementsqft</td>
+      <td>90232</td>
+      <td>0.999524</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>buildingclasstypeid</td>
+      <td>90259</td>
+      <td>0.999823</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>finishedsquarefeet13</td>
+      <td>90242</td>
+      <td>0.999634</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>storytypeid</td>
+      <td>90232</td>
+      <td>0.999524</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/numpy/lib/function_base.py:3162: RuntimeWarning: invalid value encountered in true_divide
+      c /= stddev[:, None]
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/numpy/lib/function_base.py:3163: RuntimeWarning: invalid value encountered in true_divide
+      c /= stddev[None, :]
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_37_1.png)
+
+
+    assessmentyear 1
+    storytypeid 1
+    pooltypeid2 1
+    pooltypeid7 1
+    pooltypeid10 1
+    poolcnt 1
+    decktypeid 1
+    buildingclasstypeid 1
+
+
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:1: DeprecationWarning: 
+    .ix is deprecated. Please use
+    .loc for label based indexing or
+    .iloc for positional indexing
+    
+    See the documentation here:
+    http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
+      """Entry point for launching an IPython kernel.
+
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col_labels</th>
+      <th>corr_values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>49</th>
+      <td>taxamount</td>
+      <td>-0.014768</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>heatingorsystemtypeid</td>
+      <td>-0.013732</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>yearbuilt</td>
+      <td>0.021171</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>bedroomcnt</td>
+      <td>0.032035</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>fullbathcnt</td>
+      <td>0.034267</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>calculatedbathnbr</td>
+      <td>0.036019</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bathroomcnt</td>
+      <td>0.036862</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>calculatedfinishedsquarefeet</td>
+      <td>0.047659</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>finishedsquarefeet12</td>
+      <td>0.048611</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_40_0.png)
+
+
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py:179: SettingWithCopyWarning: 
+    A value is trying to be set on a copy of a slice from a DataFrame
+    
+    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+      self._setitem_with_indexer(indexer, value)
+
+
+
+    <matplotlib.figure.Figure at 0x112e5ae48>
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_41_2.png)
+
+
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py:179: SettingWithCopyWarning: 
+    A value is trying to be set on a copy of a slice from a DataFrame
+    
+    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+      self._setitem_with_indexer(indexer, value)
+
+
+
+    <matplotlib.figure.Figure at 0x10e1843c8>
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_42_2.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_43_0.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_44_0.png)
+
+
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:1: DeprecationWarning: 
+    .ix is deprecated. Please use
+    .loc for label based indexing or
+    .iloc for positional indexing
+    
+    See the documentation here:
+    http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
+      """Entry point for launching an IPython kernel.
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py:179: SettingWithCopyWarning: 
+    A value is trying to be set on a copy of a slice from a DataFrame
+    
+    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+      self._setitem_with_indexer(indexer, value)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_45_1.png)
+
+
+
+    ---------------------------------------------------------------------------
+
+    AttributeError                            Traceback (most recent call last)
+
+    ~/anaconda3/lib/python3.6/site-packages/IPython/core/formatters.py in __call__(self, obj)
+        700                 type_pprinters=self.type_printers,
+        701                 deferred_pprinters=self.deferred_printers)
+    --> 702             printer.pretty(obj)
+        703             printer.flush()
+        704             return stream.getvalue()
+
+
+    ~/anaconda3/lib/python3.6/site-packages/IPython/lib/pretty.py in pretty(self, obj)
+        393                             if callable(meth):
+        394                                 return meth(obj, self, cycle)
+    --> 395             return _default_pprint(obj, self, cycle)
+        396         finally:
+        397             self.end_group()
+
+
+    ~/anaconda3/lib/python3.6/site-packages/IPython/lib/pretty.py in _default_pprint(obj, p, cycle)
+        508     if _safe_getattr(klass, '__repr__', None) is not object.__repr__:
+        509         # A user-provided repr. Find newlines and replace them with p.break_()
+    --> 510         _repr_pprint(obj, p, cycle)
+        511         return
+        512     p.begin_group(1, '<')
+
+
+    ~/anaconda3/lib/python3.6/site-packages/IPython/lib/pretty.py in _repr_pprint(obj, p, cycle)
+        699     """A pprint that just redirects to the normal repr function."""
+        700     # Find newlines and replace them with p.break_()
+    --> 701     output = repr(obj)
+        702     for idx,output_line in enumerate(output.splitlines()):
+        703         if idx:
+
+
+    ~/anaconda3/lib/python3.6/site-packages/ggplot/ggplot.py in __repr__(self)
+        114 
+        115     def __repr__(self):
+    --> 116         self.make()
+        117         # this is nice for dev but not the best for "real"
+        118         if os.environ.get("GGPLOT_DEV"):
+
+
+    ~/anaconda3/lib/python3.6/site-packages/ggplot/ggplot.py in make(self)
+        634                         if kwargs==False:
+        635                             continue
+    --> 636                         layer.plot(ax, facetgroup, self._aes, **kwargs)
+        637 
+        638             self.apply_limits()
+
+
+    ~/anaconda3/lib/python3.6/site-packages/ggplot/stats/stat_smooth.py in plot(self, ax, data, _aes)
+         75 
+         76         smoothed_data = pd.DataFrame(dict(x=x, y=y, y1=y1, y2=y2))
+    ---> 77         smoothed_data = smoothed_data.sort('x')
+         78 
+         79         params = self._get_plot_args(data, _aes)
+
+
+    ~/anaconda3/lib/python3.6/site-packages/pandas/core/generic.py in __getattr__(self, name)
+       3079             if name in self._info_axis:
+       3080                 return self[name]
+    -> 3081             return object.__getattribute__(self, name)
+       3082 
+       3083     def __setattr__(self, name, value):
+
+
+    AttributeError: 'DataFrame' object has no attribute 'sort'
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_46_1.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_47_0.png)
+
+
+
+
+
+    <ggplot: (282537350)>
+
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_48_0.png)
+
+
+
+
+
+    <ggplot: (-9223372036568651127)>
+
+
+
+    Put a bird on it!
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_49_1.png)
+
+
+
+
+
+    <ggplot: (-9223372036568636612)>
+
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_50_0.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_52_0.png)
 
 
 # Analyse the Dimensions of our Datasets
@@ -820,7 +1946,7 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_31_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_58_0.png)
 
 
 There are several columns which have a very high proportion of missing values. It may be worth analysing these more closely.
@@ -855,11 +1981,11 @@ Proportion of Transactions in Each Month
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_38_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_65_1.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_38_2.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_65_2.png)
 
 
 This datase contains more transactions occuring in the Spring and Summer months, although it must be noted that some transactions from October, November and December have been removed to form the competition's test set (thanks to nonrandom for pointing this out).
@@ -983,7 +2109,7 @@ Feature Importance
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_45_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_72_0.png)
 
 
 Here we see that the greatest importance in predicting the log-error comes from features involving taxes and geographical location of the property. Notably, the 'transaction_month' feature that was engineered earlier was the 12th most important feature. 
