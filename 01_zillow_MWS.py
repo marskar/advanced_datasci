@@ -3,15 +3,7 @@
 
 # # Zillow Prize Data Analysis Project
 
-# Citing <cite data-cite="perez05"></cite> 
-
-# <cite data-cite="5251998/SH25XT8L"></cite>
-
-# <div class="cite2c-biblio"></div>
-
-# ## Introduction
-
-# In[2]:
+# In[1]:
 
 
 from datetime import datetime
@@ -21,13 +13,21 @@ t = datetime.now().strftime('%H:%M:%S')
 print("This report was last updated on", d, "at", t)
 
 
+# <cite data-cite="5251998/SH25XT8L">(Pérez and Granger 2007)</cite>
+
+# ## Introduction
+
 # This Python 3 environment comes with many helpful analytics libraries installed
 # It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python (a modified version of this docker image will be made available as part of my project to ensure reproducibility).
 # For example, here's several helpful packages to load in 
 
+# ## Methods
+
+# ## Results
+
 # Import Libraries and Data:
 
-# In[3]:
+# In[2]:
 
 
 import numpy as np # linear algebra
@@ -46,7 +46,7 @@ sns.set_style("whitegrid")
 
 # Any results I write to the current directory are saved as output.
 
-# In[4]:
+# In[3]:
 
 
 ## Dictionary of feature dtypes
@@ -73,14 +73,14 @@ feature_dtypes = {col: col_type for type_list, col_type in zip([ints, floats, ob
                                   for col in type_list}
 
 
-# In[5]:
+# In[4]:
 
 
 ### Let's import our data
 data = pd.read_csv('./input/properties_2016.csv' , dtype = feature_dtypes)
 
 
-# In[6]:
+# In[5]:
 
 
 continuous = ['basementsqft', 'finishedfloor1squarefeet', 'calculatedfinishedsquarefeet', 
@@ -95,7 +95,7 @@ discrete = ['bathroomcnt', 'bedroomcnt', 'calculatedbathnbr', 'fireplacecnt', 'f
             'numberofstories', 'assessmentyear', 'taxdelinquencyyear']
 
 
-# In[10]:
+# In[6]:
 
 
 ### Continuous variable plots
@@ -109,7 +109,7 @@ for col in continuous:
     plt.suptitle(col, fontsize=16)       
 
 
-# In[9]:
+# In[7]:
 
 
 ### Discrete variable plots
@@ -124,7 +124,7 @@ for col in discrete:
     plt.suptitle(col, fontsize=16)
 
 
-# In[14]:
+# In[8]:
 
 
 ### Reading train file
@@ -132,7 +132,7 @@ errors = pd.read_csv('./input/train_2016_v2.csv', parse_dates=['transactiondate'
 errors.head()
 
 
-# In[15]:
+# In[9]:
 
 
 #### Merging tables
@@ -140,7 +140,7 @@ data_sold = data.merge(errors, how='inner', on='parcelid')
 data_sold.head()
 
 
-# In[16]:
+# In[10]:
 
 
 ### Creating 5 equal size logerror bins 
@@ -151,7 +151,7 @@ data_sold['logerror_bin'] = pd.qcut(data_sold['logerror'], 5,
 print(data_sold.logerror_bin.value_counts())
 
 
-# In[17]:
+# In[11]:
 
 
 ### Continuous variable vs logerror plots
@@ -168,14 +168,14 @@ for col in continuous:
 
 # ## Supplemental figures
 
-# In[22]:
+# In[12]:
 
 
 train_df = pd.read_csv("./input/train_2016_v2.csv", parse_dates=["transactiondate"])
 train_df.shape
 
 
-# In[27]:
+# In[13]:
 
 
 train_y = train_df['logerror'].values
@@ -184,7 +184,7 @@ cat_cols = ["hashottuborspa", "propertycountylandusecode", "propertyzoningdesc",
 from sklearn import ensemble
 
 
-# In[3]:
+# In[14]:
 
 
 plt.figure(figsize=(8,6))
@@ -196,7 +196,7 @@ plt.show()
 
 # Distribution of Target Variable:
 
-# In[29]:
+# In[ ]:
 
 
 ulimit = np.percentile(train_df.logerror.values, 99)
@@ -210,7 +210,7 @@ plt.xlabel('logerror', fontsize=12)
 plt.show()
 
 
-# In[4]:
+# In[ ]:
 
 
 log_errors = train['logerror']
@@ -219,7 +219,7 @@ lower_lim = np.percentile(log_errors, 0.5)
 log_errors = log_errors.clip(lower=lower_lim, upper=upper_lim)
 
 
-# In[5]:
+# In[ ]:
 
 
 plt.figure(figsize=(12,10))
@@ -234,7 +234,7 @@ plt.show()
 # 
 # Proportion of Missing Values in Each Column:
 
-# In[6]:
+# In[ ]:
 
 
 #load property features/description file
@@ -244,33 +244,33 @@ print('---------------------')
 print(prop.shape)
 
 
-# In[30]:
+# In[ ]:
 
 
 (train_df['parcelid'].value_counts().reset_index())['parcelid'].value_counts()
 
 
-# In[32]:
+# In[ ]:
 
 
 prop_df = pd.read_csv("./input/properties_2016.csv")
 prop_df.shape
 
 
-# In[33]:
+# In[ ]:
 
 
 prop_df.head()
 
 
-# In[22]:
+# In[ ]:
 
 
 train_df = pd.read_csv("./input/train_2016_v2.csv", parse_dates=["transactiondate"])
 train_df.shape
 
 
-# In[27]:
+# In[ ]:
 
 
 train_y = train_df['logerror'].values
@@ -279,7 +279,7 @@ cat_cols = ["hashottuborspa", "propertycountylandusecode", "propertyzoningdesc",
 from sklearn import ensemble
 
 
-# In[34]:
+# In[ ]:
 
 
 missing_df = prop_df.isnull().sum(axis=0).reset_index()
@@ -298,7 +298,7 @@ ax.set_title("Number of missing values in each column")
 plt.show()
 
 
-# In[35]:
+# In[ ]:
 
 
 plt.figure(figsize=(12,12))
@@ -308,14 +308,14 @@ plt.xlabel('Latitude', fontsize=12)
 plt.show()
 
 
-# In[36]:
+# In[ ]:
 
 
 train_df = pd.merge(train_df, prop_df, on='parcelid', how='left')
 train_df.head()
 
 
-# In[37]:
+# In[ ]:
 
 
 pd.options.display.max_rows = 65
@@ -325,13 +325,13 @@ dtype_df.columns = ["Count", "Column Type"]
 dtype_dfdtype_df.groupby("Column Type").aggregate('count').reset_index()
 
 
-# In[38]:
+# In[ ]:
 
 
 dtype_df.groupby("Column Type").aggregate('count').reset_index()
 
 
-# In[39]:
+# In[ ]:
 
 
 missing_df = train_df.isnull().sum(axis=0).reset_index()
@@ -340,7 +340,7 @@ missing_df['missing_ratio'] = missing_df['missing_count'] / train_df.shape[0]
 missing_df.ix[missing_df['missing_ratio']>0.999]
 
 
-# In[40]:
+# In[ ]:
 
 
 # Let us just impute the missing values with mean values to compute correlation coefficients #
@@ -370,7 +370,7 @@ ax.set_title("Correlation coefficient of the variables")
 plt.show()
 
 
-# In[41]:
+# In[ ]:
 
 
 corr_zero_cols = ['assessmentyear', 'storytypeid', 'pooltypeid2', 'pooltypeid7', 'pooltypeid10', 'poolcnt', 'decktypeid', 'buildingclasstypeid']
@@ -378,14 +378,14 @@ for col in corr_zero_cols:
     print(col, len(train_df_new[col].unique()))
 
 
-# In[42]:
+# In[ ]:
 
 
 corr_df_sel = corr_df.ix[(corr_df['corr_values']>0.02) | (corr_df['corr_values'] < -0.01)]
 corr_df_sel
 
 
-# In[43]:
+# In[ ]:
 
 
 cols_to_use = corr_df_sel.col_labels.tolist()
@@ -400,7 +400,7 @@ plt.title("Important variables correlation map", fontsize=15)
 plt.show()
 
 
-# In[45]:
+# In[ ]:
 
 
 col = "finishedsquarefeet12"
@@ -417,7 +417,7 @@ plt.title("Finished square feet 12 Vs Log error", fontsize=15)
 plt.show()
 
 
-# In[47]:
+# In[ ]:
 
 
 col = "calculatedfinishedsquarefeet"
@@ -434,7 +434,7 @@ plt.title("Calculated finished square feet Vs Log error", fontsize=15)
 plt.show()
 
 
-# In[48]:
+# In[ ]:
 
 
 plt.figure(figsize=(12,8))
@@ -446,7 +446,7 @@ plt.title("Frequency of Bathroom count", fontsize=15)
 plt.show()
 
 
-# In[49]:
+# In[ ]:
 
 
 plt.figure(figsize=(12,8))
@@ -458,7 +458,7 @@ plt.title("Frequency of Bedroom count", fontsize=15)
 plt.show()
 
 
-# In[50]:
+# In[ ]:
 
 
 train_df['bedroomcnt'].ix[train_df['bedroomcnt']>7] = 7
@@ -469,32 +469,32 @@ plt.ylabel('Log Error', fontsize=12)
 plt.show()
 
 
-# In[55]:
+# In[ ]:
 
 
 from ggplot import *
 ggplot(aes(x='yearbuilt', y='logerror'), data=train_df) +     geom_point(color='steelblue', size=1) +     stat_smooth()
 
 
-# In[56]:
+# In[ ]:
 
 
 ggplot(aes(x='latitude', y='longitude', color='logerror'), data=train_df) +     geom_point() +     scale_color_gradient(low = 'red', high = 'blue')
 
 
-# In[57]:
+# In[ ]:
 
 
 ggplot(aes(x='finishedsquarefeet12', y='taxamount', color='logerror'), data=train_df) +     geom_point(alpha=0.7) +     scale_color_gradient(low = 'pink', high = 'blue')
 
 
-# In[58]:
+# In[ ]:
 
 
 ggplot(aes(x='finishedsquarefeet12', y='taxamount', color='logerror'), data=train_df) +     geom_now_its_art()
 
 
-# In[60]:
+# In[ ]:
 
 
 train_y = train_df['logerror'].values
@@ -519,7 +519,7 @@ plt.xlim([-1, len(indices)])
 plt.show()
 
 
-# In[62]:
+# In[ ]:
 
 
 import xgboost as xgb
@@ -536,7 +536,7 @@ dtrain = xgb.DMatrix(train_df, train_y, feature_names=train_df.columns.values)
 model = xgb.train(dict(xgb_params, silent=0), dtrain, num_boost_round=50)
 
 
-# In[64]:
+# In[ ]:
 
 
 # plot the important features #
@@ -547,14 +547,14 @@ plt.show()
 
 # ## Analyse the Dimensions of our Datasets
 
-# In[21]:
+# In[ ]:
 
 
 print("Training Size:" + str(train.shape))
 print("Property Size:" + str(prop.shape))
 
 
-# In[7]:
+# In[ ]:
 
 
 ### ... check for NaNs
@@ -562,7 +562,7 @@ nan = prop.isnull().sum()
 nan
 
 
-# In[8]:
+# In[ ]:
 
 
 ### Plotting NaN counts
@@ -570,13 +570,13 @@ nan_sorted = nan.sort_values(ascending=False).to_frame().reset_index()
 nan_sorted.columns = ['Column', 'Number of NaNs']
 
 
-# In[9]:
+# In[ ]:
 
 
 import seaborn as sns
 
 
-# In[10]:
+# In[ ]:
 
 
 fig, ax = plt.subplots(figsize=(12, 25))
@@ -589,7 +589,7 @@ plt.show()
 
 # ### Monthly Effects on Target Variable
 
-# In[11]:
+# In[ ]:
 
 
 train['transaction_month'] = pd.DatetimeIndex(train['transactiondate']).month
@@ -601,7 +601,7 @@ ax = sns.stripplot(x=train['transaction_month'], y=train['logerror'])
 
 # For submission we are required to predict values for October, November and December. The differing distributions of the target variable over these months indicates that it may be useful to create an additional 'transaction_month' feature as shown above. Lets have a closer look at the distribution across only October, November and December.
 
-# In[12]:
+# In[ ]:
 
 
 ax1 = sns.stripplot(x=train['transaction_month'][train['transaction_month'] > 9], y=train['logerror'])
@@ -609,7 +609,7 @@ ax1 = sns.stripplot(x=train['transaction_month'][train['transaction_month'] > 9]
 
 # Proportion of Transactions in Each Month
 
-# In[13]:
+# In[ ]:
 
 
 trans = train['transaction_month'].value_counts(normalize=True)
@@ -635,7 +635,7 @@ plt.show()
 # 
 # Feature Importance
 
-# In[14]:
+# In[ ]:
 
 
 #fill NaN values with -1 and encode object columns 
@@ -649,7 +649,7 @@ print('---------------------')
 print(train.shape)
 
 
-# In[15]:
+# In[ ]:
 
 
 for c in train[['transactiondate', 'hashottuborspa', 'propertycountylandusecode', 'propertyzoningdesc', 'fireplaceflag', 'taxdelinquencyflag']]:
@@ -661,7 +661,7 @@ x_train = train.drop(['parcelid', 'logerror', 'transactiondate'], axis=1)
 y_train = train['logerror']
 
 
-# In[16]:
+# In[ ]:
 
 
 print(x_train.head())
@@ -669,7 +669,7 @@ print('------------')
 print(y_train.head())
 
 
-# In[17]:
+# In[ ]:
 
 
 rf = RandomForestRegressor(n_estimators=30, max_features=None)
@@ -685,7 +685,7 @@ importance['importance'] = rf_importance
 print(importance.head())
 
 
-# In[18]:
+# In[ ]:
 
 
 importance.sort_values('importance', axis=0, inplace=True, ascending=False)
@@ -694,7 +694,7 @@ print('------------')
 print(importance.head())
 
 
-# In[19]:
+# In[ ]:
 
 
 fig = plt.figure(figsize=(10, 4), dpi=100)
@@ -708,9 +708,15 @@ plt.show()
 
 # Here we see that the greatest importance in predicting the log-error comes from features involving taxes and geographical location of the property. Notably, the 'transaction_month' feature that was engineered earlier was the 12th most important feature. 
 
-# In[20]:
+# In[ ]:
 
 
 test= test.rename(columns={'ParcelId': 'parcelid'}) 
 #To make it easier for merging datasets on same column_id later
 
+
+# ## Bibliography
+
+# Pérez, F., and B. E. Granger. 2007. “IPython: A System for Interactive Scientific Computing.” Computing in Science & Engineering 9 (3): 21–29.
+
+# <div class="cite2c-biblio"></div>
