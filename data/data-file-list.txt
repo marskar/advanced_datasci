@@ -1,0 +1,13 @@
+data-file-list.txt
+properties_2016.csv
+properties_2016.csv.zip
+properties_2017.csv
+properties_2017.csv.zip
+sample_submission.csv
+sample_submission.csv.zip
+train_2016_v2.csv
+train_2016_v2.csv.zip
+train_2017.csv
+train_2017.csv.zip
+zillow_data_dictionary.xlsx
+zillow_data_dictionary.xlsx.zip
