@@ -6,9 +6,9 @@
 
 from datetime import datetime
 d = datetime.now().date()
-t = t.strftime('%H:%M:%S')
+t = datetime.now().strftime('%H:%M:%S')
 
-print("This report was generated on", d, "at", t)
+print("This report was last updated on", d, "at", t)
 
 
 # # Zillow Prize Data Analysis Project

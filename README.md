@@ -1,39 +1,45 @@
 # Zillow Challenge
 
-This  document describes my plan for the Advanced Data Science I (140.711.01) final project.
+This document describes my Advanced Data Science I (140.711.01) final project.
 
-For my project, I will compete for the [Zillow prize](https://www.zillow.com/promo/Zillow-prize/) and write up my results.
+For my project, I will compete for the [Zillow prize](https://www.zillow.com/promo/Zillow-prize/) and write up my results and experiences.
 
 The data provided for the challenge are described at [Zillow prize site](https://www.zillow.com/promo/Zillow-prize/data).
 
 ## Primary objective
-My **primary objective** is to describe my efforts to put together a half-decent entry in the Zillow challenge. The emphasis here will be on the *process* and exploratory data analysis.
+
+My **primary objective** is to describe my efforts to put together a half-decent entry in the Zillow challenge.
+
+## Repository organization
+
+The emphasis in this README file is the description of *process* of designing and planning this project, while the project files focus on the *process* of exploratory data analysis.
+
+#### Project Files
+|Name    | Type | Contains|
+|:------------:|:---:|:---------:|
+| 01_zillow_MWS.ipynb  | Main source   | Everything     |
+| 01_zillow_MWS.py     | Python script | Text & Code    |
+| 01_zillow_MWS.html   | Report        | Text & Figures |
+| 01_zillow_MWS.md     | Report        | Text & Figures |
+| 01_zillow_MWS.pdf    | Report        | Text & Figures |
+
+The code for the report is saved as `01_zillow_MWS.ipynb` and `01_zillow_MWS.py` files. The report is saved as `01_zillow_MWS.md`, `01_zillow_MWS.html` and `01_zillow_MWS.pdf` files. Each time I save the notebook code and report files are automatically generated thanks to the save hook in the `jupyter_notebook_config.py` file. The config file also specifies that report files contain no code or input/output numbering.
 
 ## Reproducibility
 
-I spent a great deal of time trying to figure how to 
+I spent a great deal of time trying to figure how to make my data analysis report reproducible.
+There are three strategies to run the code:
+- Install Anaconda and create a conda environment using the the `env.yml` file. The `env.yml` file has a list of all packages and versions.
+- Use the Kaggle Docker container.
+- Run the code on Kaggle.
 
+More info on these three options in the config folder!
 
-## Secondary objectives
-After signing up for the challenge, I decided to try things out in **BOTH** R and Python using the [Rpy2](https://rpy2.readthedocs.io) package in the [Jupyter Notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html) environment. This is a personal preference, but it prompted me to outline several secondary objectives:
-
-1. Compare Machine Learning in Python and R
-2. Compare Pandas and dplyr packages
-3. Compare Scikit-Learn and Caret packages
-
-<!--The Secondary Objectives are incloded in Table 1 below.
-
-### Table 1.
-|Subject    <td colspan="2"> <center> Comparison Area </center> </td> |
-|:------------:|:---:|:---------:|
-|    **Language**    |  Python   | R         |
-|    **Wrangling**    | Pandas | dplyr     |
-| **Machine Learning** | Scikit-Learn | Caret     |
-|     **IDE**         | JupyterLab    | RStudio   |
-|     **File type**    |  ipynb  | [R Markdown](http://rmarkdown.rstudio.com) | -->
+## Environment
+After signing up for the challenge, I decided to use only Python in the [Jupyter Notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html) environment. This is a personal preference, _de gustibus non est disputandum_. If I want to use, I can with the [Rpy2](https://rpy2.readthedocs.io) package, while the use of Python in an R Notebook in RStudio is extremely limited.
 
 ### First impressions
-I was very happy to find out that Kaggle supports the Jupyter Notebook format. I can upload and download notebooks and work with them using the Kaggle Notebook interface, which is very similar to the Notebook interface with which I am deeply enamored. The kaggle/python environment is defined by this [docker](https://www.docker.com/) image: https://github.com/kaggle/docker-python.
+I was very happy to find out that Kaggle supports the Jupyter Notebook format. I can upload and download notebooks and work with them using the Kaggle Notebook interface, which is very similar to the Notebook interface with which I am deeply enamored (see previous section).
 
 
 Zillow Prize Metric
@@ -51,25 +57,14 @@ Zillow Prize Timeline
 
 First steps
 --------------
-1. Create Kaggle and GitHub accounts **Done**
-2. Create a GitHub repo for the Advanced Data Science I (140.711.01) final project.
-3. Download the data files and put in the repo
-4. Add the data files to .gitignore except for zillow_data_dictionary.xlsx
-5. Perform exploratory data analysis
-5. Split the training data into training and test sets
-6. Try different algorithms using the Scikit-Learn and caret packages
-7. Measure algorithm performance
+1. Create Kaggle account **Done**
+2. Create a GitHub repo for the Advanced Data Science I (140.711.01) final project **Done**
+3. Download the data files and put in the repo **Done**
+4. Add the data files to `.gitignore` except for `zillow_data_dictionary.xlsx` (useful code book that explains the data) **Done**
+5. Perform exploratory data analysis **Done**
+5. Choose and implement imputation method **Done**
+5. Split the training data into training and test sets **Done**
+6. Try different algorithms using the Scikit-Learn **Done**
+7. Measure algorithm performance 
 7. Select the top algorithm(s)
 8. Assess opportunities to improve performance of the top algorithm(s)
-
-
-File management
-------------
-Last week I made a Kaggle account and downloaded the data files. I added the data files to .gitignore except for zillow_data_dictionary.xlsx, which is a useful code book that explains the data.
-
-Next steps
----------
-My next task is to explore the data, figure out what to do about missing data, and split the data into training and test sets.
-
-Specifically, I plan to split the data into two groups
-randomly, where 2/3 of the data will be used for training and 1/3 will be used for testing. I am not sure if I want to set up a cross-validation experiment. Perhaps a 10-fold or 5 * 2 cross-validation.
