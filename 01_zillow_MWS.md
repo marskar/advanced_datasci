@@ -1,8 +1,16 @@
 
-    This report was generated on 2017-10-05 at 23:08:21
-
-
 # Zillow Prize Data Analysis Project
+
+Citing <cite data-cite="perez05"></cite> 
+
+<cite data-cite="5251998/SH25XT8L"></cite>
+
+<div class="cite2c-biblio"></div>
+
+## Introduction
+
+    This report was last updated on 2017-10-11 at 10:39:58
+
 
 This Python 3 environment comes with many helpful analytics libraries installed
 It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python (a modified version of this docker image will be made available as part of my project to ensure reproducibility).
@@ -15,307 +23,135 @@ Input data files are available in the "../input/" directory.
 Any results I write to the current directory are saved as output.
 
 
+![png](01_zillow_MWS_files/01_zillow_MWS_14_0.png)
 
 
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>parcelid</th>
-      <th>airconditioningtypeid</th>
-      <th>architecturalstyletypeid</th>
-      <th>basementsqft</th>
-      <th>bathroomcnt</th>
-      <th>bedroomcnt</th>
-      <th>buildingclasstypeid</th>
-      <th>buildingqualitytypeid</th>
-      <th>calculatedbathnbr</th>
-      <th>decktypeid</th>
-      <th>...</th>
-      <th>numberofstories</th>
-      <th>fireplaceflag</th>
-      <th>structuretaxvaluedollarcnt</th>
-      <th>taxvaluedollarcnt</th>
-      <th>assessmentyear</th>
-      <th>landtaxvaluedollarcnt</th>
-      <th>taxamount</th>
-      <th>taxdelinquencyflag</th>
-      <th>taxdelinquencyyear</th>
-      <th>censustractandblock</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>10754147</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>9.0</td>
-      <td>2015.0</td>
-      <td>9.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>10759547</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>27516.0</td>
-      <td>2015.0</td>
-      <td>27516.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>10843547</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>650756.0</td>
-      <td>1413387.0</td>
-      <td>2015.0</td>
-      <td>762631.0</td>
-      <td>20800.37</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>10859147</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>3</td>
-      <td>7</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>1.0</td>
-      <td>NaN</td>
-      <td>571346.0</td>
-      <td>1156834.0</td>
-      <td>2015.0</td>
-      <td>585488.0</td>
-      <td>14557.57</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>10879947</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>4</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>193796.0</td>
-      <td>433491.0</td>
-      <td>2015.0</td>
-      <td>239695.0</td>
-      <td>5725.17</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 58 columns</p>
-</div>
 
+![png](01_zillow_MWS_files/01_zillow_MWS_14_1.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_2.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_3.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_2.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_4.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_3.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_5.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_4.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_6.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_5.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_7.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_6.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_8.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_7.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_9.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_8.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_10.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_9.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_11.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_10.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_12.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_11.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_13.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_12.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_14.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_13.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_15.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_14.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_16.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_15.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_17.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_16.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_18.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_17.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_14_19.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_18.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_0.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_10_19.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_1.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_11_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_2.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_11_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_3.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_11_2.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_4.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_11_3.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_5.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_11_4.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_6.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_11_5.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_7.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_11_6.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_8.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_11_7.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_9.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_11_8.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_10.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_11_9.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_11.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_11_10.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_11_11.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_11_12.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_15_12.png)
 
 
 
@@ -562,83 +398,83 @@ Any results I write to the current directory are saved as output.
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_0.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_1.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_2.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_2.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_3.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_3.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_4.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_4.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_5.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_5.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_6.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_6.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_7.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_7.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_8.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_8.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_9.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_9.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_10.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_10.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_11.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_11.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_12.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_12.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_13.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_13.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_14.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_14.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_15.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_15.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_16.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_16.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_17.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_17.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_18.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_18.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_15_19.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_19_19.png)
 
 
 ## Supplemental figures
@@ -651,7 +487,7 @@ Any results I write to the current directory are saved as output.
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_19_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_23_0.png)
 
 
 Distribution of Target Variable:
@@ -672,11 +508,11 @@ Distribution of Target Variable:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_21_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_25_1.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_23_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_27_0.png)
 
 
 Log-errors are close to normally distributed around a 0 mean, but with a slightly positive skew. There are also a considerable number of outliers, I will explore whether removing these improves model performance.
@@ -945,7 +781,7 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_31_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_35_1.png)
 
 
 
@@ -960,7 +796,7 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_32_2.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_36_2.png)
 
 
 
@@ -1593,7 +1429,7 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_37_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_41_1.png)
 
 
     assessmentyear 1
@@ -1694,7 +1530,7 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_40_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_44_0.png)
 
 
     /Users/marskar/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py:179: SettingWithCopyWarning: 
@@ -1709,7 +1545,7 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_41_2.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_45_2.png)
 
 
     /Users/marskar/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py:179: SettingWithCopyWarning: 
@@ -1724,15 +1560,15 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_42_2.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_46_2.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_43_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_47_0.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_44_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_48_0.png)
 
 
     /Users/marskar/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:1: DeprecationWarning: 
@@ -1751,7 +1587,7 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_45_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_49_1.png)
 
 
 
@@ -1827,11 +1663,11 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_46_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_50_1.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_47_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_51_0.png)
 
 
 
@@ -1842,7 +1678,7 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_48_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_52_0.png)
 
 
 
@@ -1856,7 +1692,7 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_49_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_53_1.png)
 
 
 
@@ -1867,14 +1703,14 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_50_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_54_0.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_52_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_56_0.png)
 
 
-# Analyse the Dimensions of our Datasets
+## Analyse the Dimensions of our Datasets
 
     Training Size:(90275, 61)
     Property Size:(2985217, 58)
@@ -1946,7 +1782,7 @@ Proportion of Missing Values in Each Column:
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_58_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_62_0.png)
 
 
 There are several columns which have a very high proportion of missing values. It may be worth analysing these more closely.
@@ -1981,11 +1817,11 @@ Proportion of Transactions in Each Month
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_65_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_69_1.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_65_2.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_69_2.png)
 
 
 This datase contains more transactions occuring in the Spring and Summer months, although it must be noted that some transactions from October, November and December have been removed to form the competition's test set (thanks to nonrandom for pointing this out).
@@ -2109,7 +1945,7 @@ Feature Importance
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_72_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_76_0.png)
 
 
 Here we see that the greatest importance in predicting the log-error comes from features involving taxes and geographical location of the property. Notably, the 'transaction_month' feature that was engineered earlier was the 12th most important feature. 

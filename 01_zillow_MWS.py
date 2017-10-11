@@ -1,7 +1,17 @@
 
 # coding: utf-8
 
-# In[22]:
+# # Zillow Prize Data Analysis Project
+
+# Citing <cite data-cite="perez05"></cite> 
+
+# <cite data-cite="5251998/SH25XT8L"></cite>
+
+# <div class="cite2c-biblio"></div>
+
+# ## Introduction
+
+# In[2]:
 
 
 from datetime import datetime
@@ -11,15 +21,13 @@ t = datetime.now().strftime('%H:%M:%S')
 print("This report was last updated on", d, "at", t)
 
 
-# # Zillow Prize Data Analysis Project
-
 # This Python 3 environment comes with many helpful analytics libraries installed
 # It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python (a modified version of this docker image will be made available as part of my project to ensure reproducibility).
 # For example, here's several helpful packages to load in 
 
 # Import Libraries and Data:
 
-# In[1]:
+# In[3]:
 
 
 import numpy as np # linear algebra
@@ -38,7 +46,7 @@ sns.set_style("whitegrid")
 
 # Any results I write to the current directory are saved as output.
 
-# In[3]:
+# In[4]:
 
 
 ## Dictionary of feature dtypes
@@ -70,8 +78,6 @@ feature_dtypes = {col: col_type for type_list, col_type in zip([ints, floats, ob
 
 ### Let's import our data
 data = pd.read_csv('./input/properties_2016.csv' , dtype = feature_dtypes)
-### and test if everything OK
-data.head()
 
 
 # In[6]:
@@ -539,7 +545,7 @@ xgb.plot_importance(model, height=0.8, ax=ax)
 plt.show()
 
 
-# # Analyse the Dimensions of our Datasets
+# ## Analyse the Dimensions of our Datasets
 
 # In[21]:
 
