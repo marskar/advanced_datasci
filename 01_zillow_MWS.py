@@ -70,7 +70,7 @@ print("This report was last updated on", d, "at", t)
 
 # ## Results
 
-# Import Libraries and Data:
+# ### Import Libraries and Data
 
 # In[2]:
 
@@ -139,6 +139,8 @@ discrete = ['bathroomcnt', 'bedroomcnt', 'calculatedbathnbr', 'fireplacecnt', 'f
             'garagecarcnt', 'poolcnt', 'roomcnt', 'threequarterbathnbr', 'unitcnt',
             'numberofstories', 'assessmentyear', 'taxdelinquencyyear']
 
+
+# ### Exploratory Data Analysis
 
 # In[6]:
 
@@ -210,6 +212,10 @@ for col in continuous:
     sns.regplot(x='logerror', y=col, data=data_sold, color='Sienna', ax = plt.subplot(122));
     plt.suptitle('LogError vs {}'.format(col), fontsize=16)   
 
+
+# ### Prediction
+
+# In Progress
 
 # ## Supplemental figures
 

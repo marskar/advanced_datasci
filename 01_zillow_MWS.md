@@ -62,91 +62,13 @@ For example, here's several helpful packages to load in
 
 ## Results
 
-Import Libraries and Data:
+### Import Libraries and Data
 
 Input data files are available in the "../input/" directory.
 
 Any results I write to the current directory are saved as output.
 
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_0.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_1.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_2.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_3.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_4.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_5.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_6.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_7.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_8.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_9.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_10.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_11.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_12.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_13.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_14.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_15.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_16.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_17.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_18.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_22_19.png)
-
+### Exploratory Data Analysis
 
 
 ![png](01_zillow_MWS_files/01_zillow_MWS_23_0.png)
@@ -198,6 +120,86 @@ Any results I write to the current directory are saved as output.
 
 
 ![png](01_zillow_MWS_files/01_zillow_MWS_23_12.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_23_13.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_23_14.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_23_15.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_23_16.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_23_17.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_23_18.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_23_19.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_0.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_1.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_2.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_3.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_4.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_5.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_6.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_7.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_8.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_9.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_10.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_11.png)
+
+
+
+![png](01_zillow_MWS_files/01_zillow_MWS_24_12.png)
 
 
 
@@ -444,84 +446,88 @@ Any results I write to the current directory are saved as output.
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_0.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_0.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_1.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_1.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_2.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_2.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_3.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_3.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_4.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_4.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_5.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_5.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_6.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_6.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_7.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_7.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_8.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_8.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_9.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_9.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_10.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_10.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_11.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_11.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_12.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_12.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_13.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_13.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_14.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_14.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_15.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_15.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_16.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_16.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_17.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_17.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_18.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_18.png)
 
 
 
-![png](01_zillow_MWS_files/01_zillow_MWS_27_19.png)
+![png](01_zillow_MWS_files/01_zillow_MWS_28_19.png)
 
+
+### Prediction
+
+In Progress
 
 ## Supplemental figures
 
