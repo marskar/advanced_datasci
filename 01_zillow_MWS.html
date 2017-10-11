@@ -11779,7 +11779,7 @@ div#notebook {
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Zillow-Prize-Data-Analysis-Project">Zillow Prize Data Analysis Project<a class="anchor-link" href="#Zillow-Prize-Data-Analysis-Project">&#182;</a></h1>
+<h1 id="Zillow-prize-data-analysis-report">Zillow prize data analysis report<a class="anchor-link" href="#Zillow-prize-data-analysis-report">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -11802,14 +11802,102 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><cite data-cite="5251998/SH25XT8L">(Pérez and Granger 2007)</cite></p>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <a href="https://www.zillow.com/promo/Zillow-prize/">Zillow Prize</a> is a <a href="https://www.kaggle.com/c/zillow-prize-1">Kaggle competition</a> that aims to inspire data scientists around the world to improve the accuracy of the Zillow "Zestimate" statistical and machine learning models.</p>
+<p>My goal is to compete for the Zillow prize and write up my results.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2>
+<h2 id="Methods">Methods<a class="anchor-link" href="#Methods">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Data">Data<a class="anchor-link" href="#Data">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The data were obtained from <a href="https://www.kaggle.com/c/zillow-prize-1/data">Kaggle website</a> and consist of the following files:</p>
+<ul>
+<li><code>properties_2016.csv.zip</code></li>
+<li><code>properties_2017.csv.zip</code></li>
+<li><code>sample_submission.csv</code></li>
+<li><code>train_2016_v2.csv.zip</code></li>
+<li><code>train_2017.csv.zip</code></li>
+<li><code>zillow_data_dictionary.xlsx</code> 
+The <code>zillow_data_dictionary.xlsx</code> is a code book that explains the data.
+This data will be made available on <a href="https://figshare.com/">figshare</a> to provide an additional source if the <a href="https://www.kaggle.com/c/zillow-prize-1/data">Kaggle site data</a> become unavailable.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Data analysis was done in Jupyter Notebook (Pérez and Granger 2007)<cite data-cite="5251998/SH25XT8L"></cite> Integrated Development Environment using the Python language (Pérez, Granger, and Hunter 2011)<cite data-cite="5251998/FGTD82L2"></cite> and a number of software packages:</p>
+<ul>
+<li><p>NumPy (van der Walt, Colbert, and Varoquaux 2011)<cite data-cite="5251998/3SWILWGR"></cite></p>
+</li>
+<li><p>pandas (McKinney 2010)<cite data-cite="5251998/K3NZPGU9"></cite></p>
+</li>
+<li><p>scikit-learn (Pedregosa et al. 2011)<cite data-cite="5251998/SBYLEUVD"></cite></p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Visualization">Visualization<a class="anchor-link" href="#Visualization">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following packages were used to visualize the data:</p>
+<ul>
+<li><p>Matplotlib (Hunter 2007)<cite data-cite="5251998/WP5LZ6AZ"></cite></p>
+</li>
+<li><p>Seaborn (Waskom et al. 2014)<cite data-cite="5251998/NSFX6VMN"></cite></p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Reproducibility">Reproducibility<a class="anchor-link" href="#Reproducibility">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Reproducibility is extremely important in scientific research yet many examples of problematic studies exist in the literature (Couzin-Frankel 2010)<cite data-cite="5251998/UXR4ZTUS"></cite>.</p>
+<p>The names and versions of each package used herein are listed in the accompanying <code>env.yml</code> file in the <code>config</code> folder.
+The computational environment used to analyze the data can be recreated using this <code>env.yml</code> file and the <a href="https://conda.io/docs/using/envs.html"><code>conda</code> package and environment manager</a> available as part of the <a href="https://www.anaconda.com/download/">Anaconda distribution of Python</a>.</p>
+<p>Additionally, details on how to setup a Docker image capable of running the analysis is included in the <code>README.md</code> file in the <code>config</code> folder.</p>
+<p>The code in the form of a jupyter notebook (<code>01_zillow_MWS.ipynb</code>) or Python script (<code>01_zillow_MWS.py</code>), can also be run on the Kaggle website (this requires logging in with a username and password).</p>
+<p>More information on the details of how this project was created and the computational environment was configured can be found in the accompanying <code>README.md</code> file.</p>
+
 </div>
 </div>
 </div>
@@ -11819,12 +11907,6 @@ div#notebook {
 It is defined by the kaggle/python docker image: <a href="https://github.com/kaggle/docker-python">https://github.com/kaggle/docker-python</a> (a modified version of this docker image will be made available as part of my project to ensure reproducibility).
 For example, here's several helpful packages to load in</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Methods">Methods<a class="anchor-link" href="#Methods">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -47438,6 +47520,13 @@ hBBCCCGEEKJNSBBCCCGEEEIIIYQQbeL/A5CyqQH3gQQ/AAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In Progress</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -47604,12 +47693,6 @@ hBBCCCGEEKJNSBBCCCGEEEIIIYQQbeL/A5CyqQH3gQQ/AAAAAElFTkSuQmCC
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Analyse-the-Dimensions-of-our-Datasets">Analyse the Dimensions of our Datasets<a class="anchor-link" href="#Analyse-the-Dimensions-of-our-Datasets">&#182;</a></h2>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
@@ -47629,12 +47712,6 @@ hBBCCCGEEKJNSBBCCCGEEEIIIYQQbeL/A5CyqQH3gQQ/AAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There are several columns which have a very high proportion of missing values. It may be worth analysing these more closely.</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Monthly-Effects-on-Target-Variable">Monthly Effects on Target Variable<a class="anchor-link" href="#Monthly-Effects-on-Target-Variable">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -47663,7 +47740,6 @@ hBBCCCGEEKJNSBBCCCGEEEIIIYQQbeL/A5CyqQH3gQQ/AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This datase contains more transactions occuring in the Spring and Summer months, although it must be noted that some transactions from October, November and December have been removed to form the competition's test set (thanks to nonrandom for pointing this out).</p>
 <p>Feature Importance</p>
 
 </div>
@@ -47699,13 +47775,33 @@ hBBCCCGEEKJNSBBCCCGEEEIIIYQQbeL/A5CyqQH3gQQ/AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In Progress</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Bibliography">Bibliography<a class="anchor-link" href="#Bibliography">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Couzin-Frankel, J. 2010. “Cancer Research. As Questions Grow, Duke Halts Trials, Launches Investigation.” Science 329 (5992): 614–15.</p>
+<p>Hunter, J. D. 2007. “Matplotlib: A 2D Graphics Environment.” Computing In Science &amp; Engineering 9 (3): 90–95.</p>
+<p>McKinney, W. 2010. “Data Structures for Statistical Computing in Python.” In Proceedings of the 9th Python in Science Conference, edited by S. J. van der Walt and K. J. Millman. Austin, Texas.</p>
+<p>Pedregosa, Fabian, Gaël Varoquaux, Alexandre Gramfort, Vincent Michel, Bertrand Thirion, Olivier Grisel, Mathieu Blondel, et al. 2011. “Scikit-Learn: Machine Learning in Python.” Journal of Machine Learning Research 12 (Oct): 2825–30.</p>
 <p>Pérez, F., and B. E. Granger. 2007. “IPython: A System for Interactive Scientific Computing.” Computing in Science &amp; Engineering 9 (3): 21–29.</p>
+<p>Pérez, F., B. E. Granger, and J. D. Hunter. 2011. “Python: An Ecosystem for Scientific Computing.” Computing in Science &amp; Engineering 13 (2): 13–21.</p>
+<p>Van der Walt, S., S. C. Colbert, and G. Varoquaux. 2011. “The NumPy Array: A Structure for Efficient Numerical Computation.” Computing in Science &amp; Engineering 13 (2): 22–30.</p>
+<p>Waskom, M, O Botvinnik, P Hobson, J Warmenhoven, JB Cole, Y Halchenko, J Vanderplas, et al. 2014. Seaborn: Statistical Data Visualization. Stanford, California.</p>
 
 </div>
 </div>
