@@ -1,0 +1,7 @@
+#!/bin/bash
+mv ../zillow_MWS.py ../code/
+cp ../zillow_MWS.ipynb ../code/
+cp ../zillow_MWS.bib ../code/
+mv ../zillow_MWS.html ../report/
+mv ../zillow_MWS.md ../report/
+mv ../zillow_MWS_files ../report/
