@@ -1,0 +1,150 @@
+
+from datetime import datetime
+d = datetime.now().date()
+t = datetime.now().strftime('%H:%M:%S')
+print("This report was last updated on", d, "at", t)
+
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import matplotlib.pyplot as plt # data visualization
+import seaborn as sns
+
+%matplotlib inline
+### Seaborn style
+sns.set_style("whitegrid")
+
+## Dictionary of feature dtypes
+ints = ['parcelid']
+
+floats = ['basementsqft', 'bathroomcnt', 'bedroomcnt', 'calculatedbathnbr', 'finishedfloor1squarefeet', 
+          'calculatedfinishedsquarefeet', 'finishedsquarefeet12', 'finishedsquarefeet13',
+          'finishedsquarefeet15', 'finishedsquarefeet50', 'finishedsquarefeet6', 'fireplacecnt',
+          'fullbathcnt', 'garagecarcnt', 'garagetotalsqft', 'latitude', 'longitude',
+          'lotsizesquarefeet', 'poolcnt', 'poolsizesum', 'roomcnt', 'threequarterbathnbr', 'unitcnt',
+          'yardbuildingsqft17', 'yardbuildingsqft26', 'yearbuilt', 'numberofstories',
+          'structuretaxvaluedollarcnt', 'taxvaluedollarcnt', 'assessmentyear',
+          'landtaxvaluedollarcnt', 'taxamount', 'taxdelinquencyyear']
+
+objects = ['airconditioningtypeid', 'architecturalstyletypeid', 'buildingclasstypeid',
+           'buildingqualitytypeid', 'decktypeid', 'fips', 'hashottuborspa', 'heatingorsystemtypeid',
+           'pooltypeid10', 'pooltypeid2', 'pooltypeid7', 'propertycountylandusecode',
+           'propertylandusetypeid', 'propertyzoningdesc', 'rawcensustractandblock', 'regionidcity',
+           'regionidcounty', 'regionidneighborhood', 'regionidzip', 'storytypeid',
+           'typeconstructiontypeid', 'fireplaceflag', 'taxdelinquencyflag', 'censustractandblock']
+
+feature_dtypes = {col: col_type for type_list, col_type in zip([ints, floats, objects],
+                                                               ['int64', 'float64', 'object']) 
+                                  for col in type_list}
+
+### Let's import our data
+data = pd.read_csv('../data/properties_2016.csv' , dtype = feature_dtypes)
+
+
+data.columns
+
+len(data.columns)
+
+continuous = ['basementsqft', 'finishedfloor1squarefeet', 'calculatedfinishedsquarefeet', 
+              'finishedsquarefeet12', 'finishedsquarefeet13', 'finishedsquarefeet15',
+              'finishedsquarefeet50', 'finishedsquarefeet6', 'garagetotalsqft', 'latitude',
+              'longitude', 'lotsizesquarefeet', 'poolsizesum',  'yardbuildingsqft17',
+              'yardbuildingsqft26', 'yearbuilt', 'structuretaxvaluedollarcnt', 'taxvaluedollarcnt',
+              'landtaxvaluedollarcnt', 'taxamount']
+
+discrete = ['bathroomcnt', 'bedroomcnt', 'calculatedbathnbr', 'fireplacecnt', 'fullbathcnt',
+            'garagecarcnt', 'poolcnt', 'roomcnt', 'threequarterbathnbr', 'unitcnt',
+            'numberofstories', 'assessmentyear', 'taxdelinquencyyear']
+
+len(continuous)
+
+len(discrete)
+
+### Reading train file
+errors = pd.read_csv('../data/train_2016_v2.csv', parse_dates=['transactiondate'])
+
+
+train_df = pd.read_csv("../data/train_2016_v2.csv", parse_dates=["transactiondate"])
+train_df.shape
+
+train_y = train_df['logerror'].values
+cat_cols = ["hashottuborspa", "propertycountylandusecode", "propertyzoningdesc", "fireplaceflag", "taxdelinquencyflag"]
+
+from sklearn import ensemble
+
+(train_df['parcelid'].value_counts().reset_index())['parcelid'].value_counts()
+
+prop_df = pd.read_csv("../data/properties_2016.csv")
+prop_df.shape
+
+train_y = train_df['logerror'].values
+cat_cols = ["hashottuborspa", "propertycountylandusecode", "propertyzoningdesc", "fireplaceflag", "taxdelinquencyflag"]
+
+from sklearn import ensemble
+
+missing_df = prop_df.isnull().sum/prop_df.sum
+missing_df.columns = ['column_name', 'missing_count']
+missing_df = missing_df[missing_df['missing_count']>0]
+missing_df = missing_df.sort_values(by='missing_count')
+
+ind = np.arange(missing_df.shape[0])
+width = 0.9
+fig, ax = plt.subplots(figsize=(12,18))
+rects = ax.barh(ind, missing_df.missing_count.values, color='blue')
+ax.set_yticks(ind)
+ax.set_yticklabels(missing_df.column_name.values, rotation='horizontal')
+ax.set_xlabel("Count of missing values")
+ax.set_title("Number of missing values in each column")
+plt.show()
+
+train_df = pd.merge(train_df, prop_df, on='parcelid', how='left')
+train_df.head()
+
+pd.options.display.max_rows = 65
+
+dtype_df = train_df.dtypes.reset_index()
+dtype_df.columns = ["Count", "Column Type"]
+dtype_df.groupby("Column Type").aggregate('count').reset_index()
+
+dtype_df.groupby("Column Type").aggregate('count').reset_index()
+
+missing_df = train_df.isnull().sum(axis=0).reset_index()
+missing_df.columns = ['column_name', 'missing_count']
+missing_df['missing_ratio'] = missing_df['missing_count'] / train_df.shape[0]
+missing_df.ix[missing_df['missing_ratio']>0.999]
+
+import xgboost as xgb
+xgb_params = {
+    'eta': 0.05,
+    'max_depth': 8,
+    'subsample': 0.7,
+    'colsample_bytree': 0.7,
+    'objective': 'reg:linear',
+    'silent': 1,
+    'seed' : 0
+}
+dtrain = xgb.DMatrix(train_df, train_y, feature_names=train_df.columns.values)
+model = xgb.train(dict(xgb_params, silent=0), dtrain, num_boost_round=50)
+
+# plot the important features #
+fig, ax = plt.subplots(figsize=(12,18))
+xgb.plot_importance(model, height=0.8, ax=ax)
+plt.show()
+
+     print("Training Size:" + str(train_df.shape))
+     print("Property Size:" + str(prop_df.shape))
+
+### ... check for NaNs
+nan = prop_df.isnull().sum()
+
+nan_prop = nan/len(df)
+
+### Plotting NaN counts
+nan_sorted = nan.sort_values(ascending=False).to_frame().reset_index()
+nan_sorted.columns = ['Column', 'Number of NaNs']
+
+import seaborn as sns
+
+fig, ax = plt.subplots(figsize=(12, 25))
+sns.barplot(x="Number of NaNs", y="Column", data=nan_sorted, color='Blue', ax=ax)
+ax.set(xlabel="Number of NaNs", ylabel="", title="Total Number of NaNs in each column")
+plt.show()
