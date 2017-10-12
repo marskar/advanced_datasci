@@ -3,7 +3,7 @@
 
 # # Zillow prize data analysis report
 
-# In[ ]:
+# In[1]:
 
 
 from datetime import datetime
@@ -90,7 +90,7 @@ print("This report was last updated on", d, "at", t)
 
 # Any results I write to the current directory are saved as output.
 
-# In[1]:
+# In[2]:
 
 
 import numpy as np # linear algebra
@@ -107,14 +107,14 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 sns.set_style("whitegrid")
 
 
-# In[2]:
+# In[3]:
 
 
 prop = pd.read_csv("../input/properties_2016.csv")
 prop.shape
 
 
-# In[3]:
+# In[4]:
 
 
 ### ... check for NaNs
@@ -122,7 +122,7 @@ nan = prop.isnull().sum()/len(prop)*100
 nan
 
 
-# In[4]:
+# In[5]:
 
 
 ### Plotting NaN counts
@@ -130,7 +130,7 @@ nan_sorted = nan.sort_values(ascending=False).to_frame().reset_index()
 nan_sorted.columns = ['Column', 'Number of NaNs']
 
 
-# In[5]:
+# In[6]:
 
 
 fig, ax = plt.subplots(figsize=(12, 25))
@@ -143,14 +143,14 @@ plt.show()
 
 # #### Feature Importance by Random Forest
 
-# In[6]:
+# In[7]:
 
 
 train = pd.read_csv("../input/train_2016_v2.csv", parse_dates=["transactiondate"])
 train.shape
 
 
-# In[7]:
+# In[8]:
 
 
 train['transaction_month'] = pd.DatetimeIndex(train['transactiondate']).month
@@ -163,7 +163,7 @@ train.sort_values('transaction_month', axis=0, ascending=True, inplace=True)
 
 # Feature Importance
 
-# In[8]:
+# In[9]:
 
 
 #fill NaN values with -1 and encode object columns 
@@ -174,7 +174,7 @@ for x in prop.columns:
 train = pd.merge(train, prop, on='parcelid', how='left')
 
 
-# In[9]:
+# In[10]:
 
 
 for c in train[['transactiondate', 'hashottuborspa', 'propertycountylandusecode', 'propertyzoningdesc', 'fireplaceflag', 'taxdelinquencyflag']]:
@@ -186,45 +186,75 @@ x_train = train.drop(['parcelid', 'logerror', 'transactiondate'], axis=1)
 y_train = train['logerror']
 
 
-# In[10]:
-
-
-rf = RandomForestRegressor(n_estimators=30, max_features=None)
-
-rf.fit(x_train, y_train)
-
-rf_importance = rf.feature_importances_
-
-
-importance = pd.DataFrame()
-importance['features'] = x_train.columns
-importance['importance'] = rf_importance
-print(importance.head())
-
-
 # In[11]:
 
 
-importance.sort_values('importance', axis=0, inplace=True, ascending=False)
-
-print('------------')
-print(importance.head())
+rf = RandomForestRegressor(n_estimators=30, max_features=None)
+rf.fit(x_train, y_train)
 
 
 # In[12]:
 
 
-fig = plt.figure(figsize=(10, 4), dpi=100)
-plt.bar(range(len(importance)), importance['importance'])
-plt.title('Feature Importances')
-plt.xlabel('Feature Name')
-plt.ylabel('Importance')
-plt.xticks(range(len(importance)), importance['features'], rotation=90)
-plt.show()
+rf_importance = rf.feature_importances_
+rf_importance_df = pd.DataFrame()
+rf_importance_df['features'] = x_train.columns
+rf_importance_df['importance'] = rf_importance
+print(rf_importance_df.head())
 
 
 # In[13]:
 
+
+rf_importance_df.sort_values('importance', axis=0, inplace=True, ascending=False)
+
+print(rf_importance_df.head())
+
+
+# In[14]:
+
+
+fig, ax = plt.subplots(figsize=(6, 12.5))
+sns.barplot(x="importance", y="features", data=rf_importance_df, color='Blue', ax=ax)
+ax.set(xlabel="Importance", ylabel="Feature Name", title="Feature Importances")
+plt.show()
+
+
+# In[15]:
+
+
+etr = ensemble.ExtraTreesRegressor(n_estimators=25, max_depth=30, max_features=0.3, n_jobs=-1, random_state=0)
+etr.fit(x_train, y_train)
+
+
+# In[16]:
+
+
+etr_importance = etr.feature_importances_
+etr_importance_df = pd.DataFrame()
+etr_importance_df['features'] = x_train.columns
+etr_importance_df['importance'] = etr_importance
+print(etr_importance_df.head())
+
+
+# In[17]:
+
+
+etr_importance_df.sort_values('importance', axis=0, inplace=True, ascending=False)
+
+print(etr_importance_df.head())
+
+
+# In[18]:
+
+
+fig, ax = plt.subplots(figsize=(6, 12.5))
+sns.barplot(x="importance", y="features", data=etr_importance_df, color='Blue', ax=ax)
+ax.set(xlabel="Importance", ylabel="Feature Name", title="Feature Importances")
+plt.show()
+
+
+# In[19]:
 
 
 xgb_params = {
@@ -240,37 +270,13 @@ dtrain = xgb.DMatrix(x_train, y_train, feature_names=x_train.columns.values)
 model = xgb.train(dict(xgb_params, silent=0), dtrain, num_boost_round=50)
 
 
-# In[14]:
+# In[20]:
 
 
 # plot the important features #
-fig, ax = plt.subplots(figsize=(12,18))
-xgb.plot_importance(model, height=0.8, ax=ax)
-plt.show()
-
-
-# In[16]:
-
-
-train_y = train['logerror'].values
-cat_cols = ["hashottuborspa", "propertycountylandusecode", "propertyzoningdesc", "fireplaceflag", "taxdelinquencyflag"]
-train = train.drop(['parcelid', 'logerror', 'transactiondate']+cat_cols, axis=1)
-feat_names = train.columns.values
-
-
-model = ensemble.ExtraTreesRegressor(n_estimators=25, max_depth=30, max_features=0.3, n_jobs=-1, random_state=0)
-model.fit(train, train_y)
-
-## plot the importances ##
-importances = model.feature_importances_
-std = np.std([tree.feature_importances_ for tree in model.estimators_], axis=0)
-indices = np.argsort(importances)[::-1][:20]
-
-plt.figure(figsize=(12,12))
-plt.title("Feature importances")
-plt.bar(range(len(indices)), importances[indices], color="r", yerr=std[indices], align="center")
-plt.xticks(range(len(indices)), feat_names[indices], rotation='vertical')
-plt.xlim([-1, len(indices)])
+fig, ax = plt.subplots(figsize=(6,9))
+xgb.plot_importance(model, height=0.8, grid = False, color="blue", ax=ax)
+ax.xaxis.grid()
 plt.show()
 
 

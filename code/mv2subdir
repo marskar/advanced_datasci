@@ -1,4 +1,5 @@
 #!/bin/bash
 mv ./zillow_MWS.html ../report/
 mv ./zillow_MWS.md ../report/
+rm -rf ../report/zillow_MWS_files/
 mv ./zillow_MWS_files/ ../report/zillow_MWS_files/
