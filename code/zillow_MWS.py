@@ -90,7 +90,7 @@ print("This report was last updated on", d, "at", t)
 
 # Any results I write to the current directory are saved as output.
 
-# In[1]:
+# In[19]:
 
 
 import numpy as np # linear algebra
@@ -101,6 +101,7 @@ import seaborn as sns
 import xgboost as xgb
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestRegressor
+from sklearn import ensemble
 get_ipython().run_line_magic('matplotlib', 'inline')
 ### Seaborn style
 sns.set_style("whitegrid")
@@ -262,17 +263,16 @@ xgb.plot_importance(model, height=0.8, ax=ax)
 plt.show()
 
 
-# In[16]:
+# In[26]:
 
 
-train_y = train['logerror'].values
-cat_cols = ["hashottuborspa", "propertycountylandusecode", "propertyzoningdesc", "fireplaceflag", "taxdelinquencyflag"]
-train = train.drop(['parcelid', 'logerror', 'transactiondate']+cat_cols, axis=1)
+
+
 feat_names = train.columns.values
 
 
 model = ensemble.ExtraTreesRegressor(n_estimators=25, max_depth=30, max_features=0.3, n_jobs=-1, random_state=0)
-model.fit(train, train_y)
+model.fit(train, y_train)
 
 ## plot the importances ##
 importances = model.feature_importances_

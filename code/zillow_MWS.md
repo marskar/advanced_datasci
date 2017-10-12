@@ -79,10 +79,6 @@ Input data files are available in the "../input/" directory.
 
 Any results I write to the current directory are saved as output.
 
-    /Users/marskar/anaconda3/lib/python3.6/site-packages/sklearn/cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
-      "This module will be removed in 0.20.", DeprecationWarning)
-
-
     /Users/marskar/anaconda3/lib/python3.6/site-packages/IPython/core/interactiveshell.py:2728: DtypeWarning: Columns (22,32,34,49,55) have mixed types. Specify dtype option on import or set low_memory=False.
       interactivity=interactivity, compiler=compiler, result=result)
 
@@ -181,20 +177,20 @@ Proportion of Transactions in Each Month
 Feature Importance
 
                        features  importance
-    0         transaction_month    0.040234
-    1     airconditioningtypeid    0.006797
-    2  architecturalstyletypeid    0.000314
-    3              basementsqft    0.000217
-    4               bathroomcnt    0.007196
+    0         transaction_month    0.038390
+    1     airconditioningtypeid    0.007597
+    2  architecturalstyletypeid    0.000201
+    3              basementsqft    0.000161
+    4               bathroomcnt    0.009147
 
 
     ------------
                           features  importance
-    50  structuretaxvaluedollarcnt    0.086694
-    24                    latitude    0.082015
-    25                   longitude    0.076696
-    26           lotsizesquarefeet    0.072600
-    54                   taxamount    0.072549
+    50  structuretaxvaluedollarcnt    0.082022
+    24                    latitude    0.078202
+    54                   taxamount    0.076560
+    25                   longitude    0.076341
+    26           lotsizesquarefeet    0.066890
 
 
 
