@@ -90,7 +90,7 @@ print("This report was last updated on", d, "at", t)
 
 # Any results I write to the current directory are saved as output.
 
-# In[19]:
+# In[1]:
 
 
 import numpy as np # linear algebra
@@ -161,23 +161,9 @@ train.sort_values('transaction_month', axis=0, ascending=True, inplace=True)
 
 # Proportion of Transactions in Each Month
 
-# In[8]:
-
-
-trans = train['transaction_month'].value_counts(normalize=True)
-trans = pd.DataFrame(trans)
-trans['month'] = trans.index
-trans = trans.sort_values('month', ascending=True)
-trans.set_index('month')
-trans.rename({'transaction_month' : ''})
-
-
-months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
-
 # Feature Importance
 
-# In[9]:
+# In[8]:
 
 
 #fill NaN values with -1 and encode object columns 
@@ -188,7 +174,7 @@ for x in prop.columns:
 train = pd.merge(train, prop, on='parcelid', how='left')
 
 
-# In[10]:
+# In[9]:
 
 
 for c in train[['transactiondate', 'hashottuborspa', 'propertycountylandusecode', 'propertyzoningdesc', 'fireplaceflag', 'taxdelinquencyflag']]:
@@ -200,7 +186,7 @@ x_train = train.drop(['parcelid', 'logerror', 'transactiondate'], axis=1)
 y_train = train['logerror']
 
 
-# In[11]:
+# In[10]:
 
 
 rf = RandomForestRegressor(n_estimators=30, max_features=None)
@@ -216,7 +202,7 @@ importance['importance'] = rf_importance
 print(importance.head())
 
 
-# In[12]:
+# In[11]:
 
 
 importance.sort_values('importance', axis=0, inplace=True, ascending=False)
@@ -225,7 +211,7 @@ print('------------')
 print(importance.head())
 
 
-# In[13]:
+# In[12]:
 
 
 fig = plt.figure(figsize=(10, 4), dpi=100)
@@ -237,7 +223,7 @@ plt.xticks(range(len(importance)), importance['features'], rotation=90)
 plt.show()
 
 
-# In[14]:
+# In[13]:
 
 
 
@@ -254,7 +240,7 @@ dtrain = xgb.DMatrix(x_train, y_train, feature_names=x_train.columns.values)
 model = xgb.train(dict(xgb_params, silent=0), dtrain, num_boost_round=50)
 
 
-# In[15]:
+# In[14]:
 
 
 # plot the important features #
@@ -263,16 +249,17 @@ xgb.plot_importance(model, height=0.8, ax=ax)
 plt.show()
 
 
-# In[26]:
+# In[16]:
 
 
-
-
+train_y = train['logerror'].values
+cat_cols = ["hashottuborspa", "propertycountylandusecode", "propertyzoningdesc", "fireplaceflag", "taxdelinquencyflag"]
+train = train.drop(['parcelid', 'logerror', 'transactiondate']+cat_cols, axis=1)
 feat_names = train.columns.values
 
 
 model = ensemble.ExtraTreesRegressor(n_estimators=25, max_depth=30, max_features=0.3, n_jobs=-1, random_state=0)
-model.fit(train, y_train)
+model.fit(train, train_y)
 
 ## plot the importances ##
 importances = model.feature_importances_
