@@ -1,7 +1,7 @@
 
 # Zillow prize data analysis report
 
-    This report was last updated on 2017-10-11 at 12:04:56
+    This report was last updated on 2017-10-12 at 11:52:31
 
 
 ## Introduction
@@ -43,6 +43,20 @@ The following packages were used to visualize the data:
 
 - Seaborn (Waskom et al. 2014)<cite data-cite="5251998/NSFX6VMN"></cite>
 
+- r-ggplot2
+
+- r-cowplot
+
+The use of `R` code and packages in a `Python` environment is possible through the use of the `Rpy2` package.
+
+### Prediction
+
+Machine learning prediction was done using the following packages:
+
+- scikit-learn (Pedregosa et al. 2011)<cite data-cite="5251998/SBYLEUVD"></cite>
+- xgboost
+- r-caret 
+
 ### Reproducibility
 
 Reproducibility is extremely important in scientific research yet many examples of problematic studies exist in the literature (Couzin-Frankel 2010)<cite data-cite="5251998/UXR4ZTUS"></cite>.
@@ -68,470 +82,93 @@ Input data files are available in the "../input/" directory.
 
 Any results I write to the current directory are saved as output.
 
-### Exploratory Data Analysis
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_0.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_1.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_2.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_3.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_4.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_5.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_6.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_7.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_8.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_9.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_10.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_11.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_12.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_13.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_14.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_15.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_16.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_17.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_18.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_23_19.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_0.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_1.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_2.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_3.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_4.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_5.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_6.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_7.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_8.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_9.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_10.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_11.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_24_12.png)
-
-
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>parcelid</th>
-      <th>logerror</th>
-      <th>transactiondate</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>11016594</td>
-      <td>0.0276</td>
-      <td>2016-01-01</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>14366692</td>
-      <td>-0.1684</td>
-      <td>2016-01-01</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>12098116</td>
-      <td>-0.0040</td>
-      <td>2016-01-01</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>12643413</td>
-      <td>0.0218</td>
-      <td>2016-01-02</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>14432541</td>
-      <td>-0.0050</td>
-      <td>2016-01-02</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>parcelid</th>
-      <th>airconditioningtypeid</th>
-      <th>architecturalstyletypeid</th>
-      <th>basementsqft</th>
-      <th>bathroomcnt</th>
-      <th>bedroomcnt</th>
-      <th>buildingclasstypeid</th>
-      <th>buildingqualitytypeid</th>
-      <th>calculatedbathnbr</th>
-      <th>decktypeid</th>
-      <th>...</th>
-      <th>structuretaxvaluedollarcnt</th>
-      <th>taxvaluedollarcnt</th>
-      <th>assessmentyear</th>
-      <th>landtaxvaluedollarcnt</th>
-      <th>taxamount</th>
-      <th>taxdelinquencyflag</th>
-      <th>taxdelinquencyyear</th>
-      <th>censustractandblock</th>
-      <th>logerror</th>
-      <th>transactiondate</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>17073783</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.5</td>
-      <td>3.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.5</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>115087.0</td>
-      <td>191811.0</td>
-      <td>2015.0</td>
-      <td>76724.0</td>
-      <td>2015.06</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>61110022003007</td>
-      <td>0.0953</td>
-      <td>2016-01-27</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>17088994</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>2.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>143809.0</td>
-      <td>239679.0</td>
-      <td>2015.0</td>
-      <td>95870.0</td>
-      <td>2581.30</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>61110015031002</td>
-      <td>0.0198</td>
-      <td>2016-03-30</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>17100444</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.0</td>
-      <td>3.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.0</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>33619.0</td>
-      <td>47853.0</td>
-      <td>2015.0</td>
-      <td>14234.0</td>
-      <td>591.64</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>61110007011007</td>
-      <td>0.0060</td>
-      <td>2016-05-27</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>17102429</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.5</td>
-      <td>2.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.5</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>45609.0</td>
-      <td>62914.0</td>
-      <td>2015.0</td>
-      <td>17305.0</td>
-      <td>682.78</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>61110008002013</td>
-      <td>-0.0566</td>
-      <td>2016-06-07</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>17109604</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.5</td>
-      <td>4.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.5</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>277000.0</td>
-      <td>554000.0</td>
-      <td>2015.0</td>
-      <td>277000.0</td>
-      <td>5886.92</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>61110014021007</td>
-      <td>0.0573</td>
-      <td>2016-08-08</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 60 columns</p>
-</div>
-
-
-
-    Large Negative Error     18442
-    Small Error              18432
-    Medium Negative Error    17973
-    Large Positive Error     17947
-    Medium Positive Error    17481
-    Name: logerror_bin, dtype: int64
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_0.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_1.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_2.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_3.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_4.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_5.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_6.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_7.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_8.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_9.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_10.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_11.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_12.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_13.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_14.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_15.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_16.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_17.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_18.png)
-
-
-
-![png](01_zillow_MWS_files/01_zillow_MWS_28_19.png)
-
-
-### Prediction
-
-In Progress
-
-## Supplemental figures
-
-In Progress
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/sklearn/cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+      "This module will be removed in 0.20.", DeprecationWarning)
+
+
+    /Users/marskar/anaconda3/lib/python3.6/site-packages/IPython/core/interactiveshell.py:2728: DtypeWarning: Columns (22,32,34,49,55) have mixed types. Specify dtype option on import or set low_memory=False.
+      interactivity=interactivity, compiler=compiler, result=result)
+
+
+
+
+
+    (2985217, 58)
+
+
+
+
+
+
+    parcelid                         0.000000
+    airconditioningtypeid           72.815410
+    architecturalstyletypeid        99.796966
+    basementsqft                    99.945465
+    bathroomcnt                      0.383959
+    bedroomcnt                       0.383557
+    buildingclasstypeid             99.576949
+    buildingqualitytypeid           35.063749
+    calculatedbathnbr                4.318346
+    decktypeid                      99.427311
+    finishedfloor1squarefeet        93.209304
+    calculatedfinishedsquarefeet     1.861339
+    finishedsquarefeet12             9.246664
+    finishedsquarefeet13            99.743000
+    finishedsquarefeet15            93.608572
+    finishedsquarefeet50            93.209304
+    finishedsquarefeet6             99.263002
+    fips                             0.383121
+    fireplacecnt                    89.527160
+    fullbathcnt                      4.318346
+    garagecarcnt                    70.411967
+    garagetotalsqft                 70.411967
+    hashottuborspa                  97.688141
+    heatingorsystemtypeid           39.488453
+    latitude                         0.383121
+    longitude                        0.383121
+    lotsizesquarefeet                9.248875
+    poolcnt                         82.663438
+    poolsizesum                     99.063385
+    pooltypeid10                    98.762603
+    pooltypeid2                     98.925539
+    pooltypeid7                     83.737899
+    propertycountylandusecode        0.411260
+    propertylandusetypeid            0.383121
+    propertyzoningdesc              33.719090
+    rawcensustractandblock           0.383121
+    regionidcity                     2.105207
+    regionidcounty                   0.383121
+    regionidneighborhood            61.262381
+    regionidzip                      0.468308
+    roomcnt                          0.384394
+    storytypeid                     99.945599
+    threequarterbathnbr             89.560859
+    typeconstructiontypeid          99.773986
+    unitcnt                         33.757244
+    yardbuildingsqft17              97.308236
+    yardbuildingsqft26              99.911330
+    yearbuilt                        2.007492
+    numberofstories                 77.151778
+    fireplaceflag                   99.827048
+    structuretaxvaluedollarcnt       1.841809
+    taxvaluedollarcnt                1.425357
+    assessmentyear                   0.383188
+    landtaxvaluedollarcnt            2.268947
+    taxamount                        1.046825
+    taxdelinquencyflag              98.108613
+    taxdelinquencyyear              98.108546
+    censustractandblock              2.516601
+    dtype: float64
+
+
+
+
+![png](zillow_MWS_files/zillow_MWS_24_0.png)
+
+
+There are several columns which have a very high proportion of missing values. It may be worth analysing these more closely.
+
+#### Feature Importance by Random Forest
 
 
 
@@ -540,41 +177,74 @@ In Progress
 
 
 
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-14-9ba60351fb19> in <module>()
-          1 plt.figure(figsize=(8,6))
-    ----> 2 plt.scatter(range(train.shape[0]), np.sort(train.logerror.values))
-          3 plt.xlabel('index', fontsize=12)
-          4 plt.ylabel('logerror', fontsize=12)
-          5 plt.show()
-
-
-    NameError: name 'train' is not defined
-
-
-
-    <matplotlib.figure.Figure at 0x10feda240>
-
-
-Distribution of Target Variable:
-
-Log-errors are close to normally distributed around a 0 mean, but with a slightly positive skew. There are also a considerable number of outliers, I will explore whether removing these improves model performance.
-
-Proportion of Missing Values in Each Column:
-
-There are several columns which have a very high proportion of missing values. It may be worth analysing these more closely.
-
-For submission we are required to predict values for October, November and December. The differing distributions of the target variable over these months indicates that it may be useful to create an additional 'transaction_month' feature as shown above. Lets have a closer look at the distribution across only October, November and December.
-
-Proportion of Transactions in Each Month
-
 Feature Importance
 
-Here we see that the greatest importance in predicting the log-error comes from features involving taxes and geographical location of the property. Notably, the 'transaction_month' feature that was engineered earlier was the 12th most important feature. 
+
+
+
+    RandomForestRegressor(bootstrap=True, criterion='mse', max_depth=None,
+               max_features=None, max_leaf_nodes=None,
+               min_impurity_decrease=0.0, min_impurity_split=None,
+               min_samples_leaf=1, min_samples_split=2,
+               min_weight_fraction_leaf=0.0, n_estimators=30, n_jobs=1,
+               oob_score=False, random_state=None, verbose=0, warm_start=False)
+
+
+
+                       features  importance
+    0         transaction_month    0.041078
+    1     airconditioningtypeid    0.005809
+    2  architecturalstyletypeid    0.000262
+    3              basementsqft    0.000238
+    4               bathroomcnt    0.007725
+
+
+                          features  importance
+    50  structuretaxvaluedollarcnt    0.084278
+    24                    latitude    0.078829
+    54                   taxamount    0.076839
+    25                   longitude    0.072749
+    26           lotsizesquarefeet    0.071840
+
+
+
+![png](zillow_MWS_files/zillow_MWS_35_0.png)
+
+
+
+
+
+    ExtraTreesRegressor(bootstrap=False, criterion='mse', max_depth=30,
+              max_features=0.3, max_leaf_nodes=None, min_impurity_decrease=0.0,
+              min_impurity_split=None, min_samples_leaf=1, min_samples_split=2,
+              min_weight_fraction_leaf=0.0, n_estimators=25, n_jobs=-1,
+              oob_score=False, random_state=0, verbose=0, warm_start=False)
+
+
+
+                       features  importance
+    0         transaction_month    0.052949
+    1     airconditioningtypeid    0.015291
+    2  architecturalstyletypeid    0.000204
+    3              basementsqft    0.000212
+    4               bathroomcnt    0.014486
+
+
+                          features  importance
+    50  structuretaxvaluedollarcnt    0.060509
+    54                   taxamount    0.059521
+    53       landtaxvaluedollarcnt    0.056897
+    51           taxvaluedollarcnt    0.056176
+    26           lotsizesquarefeet    0.054112
+
+
+
+![png](zillow_MWS_files/zillow_MWS_39_0.png)
+
+
+
+![png](zillow_MWS_files/zillow_MWS_41_0.png)
+
 
 ## Conclusions
 

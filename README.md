@@ -1,6 +1,6 @@
 # Zillow Challenge
 
-This document describes my Advanced Data Science I (140.711.01) final project.
+This document describes my Advanced Data Science I (140.711.01) final project. The code and all supporting files are in my [advanced_datasci GitHub repo](https://github.com/marskar/advanced_datasci).
 
 For my project, I will compete for the [Zillow prize](https://www.zillow.com/promo/Zillow-prize/) and write up my results and experiences.
 
@@ -65,6 +65,6 @@ First steps
 5. Choose and implement imputation method **Done**
 5. Split the training data into training and test sets **Done**
 6. Try different algorithms using the Scikit-Learn **Done**
-7. Measure algorithm performance 
+7. Measure algorithm performance
 7. Select the top algorithm(s)
 8. Assess opportunities to improve performance of the top algorithm(s)

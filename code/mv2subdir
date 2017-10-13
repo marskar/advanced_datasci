@@ -1,5 +1,22 @@
 #!/bin/bash
+# move html & md to report folder
 mv ./zillow_MWS.html ../report/
 mv ./zillow_MWS.md ../report/
+
+# move report files
 rm -rf ../report/zillow_MWS_files/
-mv ./zillow_MWS_files/ ../report/zillow_MWS_files/
+mv ./zillow_MWS_files/ ../report/
+
+# copy README to draft
+cp ../README.md ../draft/
+
+# create pdf and move to draft and report
+jupyter nbconvert --to pdf --no-prompt --PDFexporter.exclude_input=True zillow_MWS.ipynb
+cp ./zillow_MWS.pdf ../draft/
+mv ./zillow_MWS.pdf ../report/
+
+# push changes in draft folder to 'https://github.com/adv-datasci/draft-report-marskar' repo
+cd ../draft
+git add .
+git commit -m "Updated to match 'https://github.com/marskar/advanced_datasci'"
+git push
