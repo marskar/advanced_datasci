@@ -12,6 +12,7 @@
 # ## Data
 
 # The data were obtained from [Kaggle website](https://www.kaggle.com/c/zillow-prize-1/data) and consist of the following files:
+# 
 # - properties_2016.csv.zip
 # - properties_2017.csv.zip
 # - sample_submission.csv
@@ -26,18 +27,17 @@
 
 # Data analysis was done in Jupyter Notebook (Pérez and Granger 2007) Integrated Development Environment using the Python language (Pérez, Granger, and Hunter 2011) and a number of software packages:
 # 
-# - NumPy (van der Walt, Colbert, and Varoquaux 2011)
-# 
-# - pandas (McKinney 2010)
-# 
-# - scikit-learn (Pedregosa et al. 2011)
+# - NumPy <cite data-cite="5251998/3SWILWGR"></cite>
+# - Pandas <cite data-cite="5251998/K3NZPGU9"></cite>
+# - Scikit-learn (Pedregosa et al. 2011)
 # 
 
 # ## Visualization
 
 # The following packages were used to visualize the data:
-# - Matplotlib (Hunter 2007)
-# - Seaborn (Waskom et al. 2014)
+# 
+# - Matplotlib <cite data-cite="5251998/WP5LZ6AZ"></cite>
+# - Seaborn 
 # - r-ggplot2
 # - r-cowplot
 # 
@@ -46,6 +46,7 @@
 # ## Prediction
 
 # Machine learning prediction was done using the following packages:
+# 
 # - scikit-learn (Pedregosa et al. 2011)
 # - xgboost
 # - r-caret 
@@ -69,9 +70,7 @@
 
 # # Results
 
-# ## Import Libraries and Data
-
-# Any results I write to the current directory are saved as output.
+# There are several columns which have a very high proportion of missing values. I will remove features that have more than 80% missing values.
 
 # In[3]:
 
@@ -133,44 +132,36 @@ nan = prop.isnull().sum()/len(prop)*100
 ### Plotting NaN counts
 nan_sorted = nan.sort_values(ascending=False).to_frame().reset_index()
 nan_sorted.columns = ['Column', 'percentNaN']
-
-
-# In[8]:
-
-
 nan_sorted.head();
 
 
-# In[9]:
+# In[ ]:
 
+
+## Missing Values
 
 fig, ax = plt.subplots(figsize=(6, 12.5), dpi=300)
 sns.barplot(x="percentNaN", y="Column", data=nan_sorted, color='Blue', ax=ax)
 ax.set(xlabel="Missing Values (%)", ylabel="", title="Percent Missing Values in each column")
+ax.xaxis.grid()
 plt.show()
 
 
-# There are several columns which have a very high proportion of missing values. I will remove features that have more than 80% missing values.
-
-# #### Feature Importance by Random Forest
-
-# In[10]:
+# In[21]:
 
 
 train = pd.read_csv("../input/train_2016_v2.csv", parse_dates=["transactiondate"])
 train.shape;
 
 
-# In[11]:
+# In[22]:
 
 
 train['transaction_month'] = pd.DatetimeIndex(train['transactiondate']).month
 train.sort_values('transaction_month', axis=0, ascending=True, inplace=True)
 
 
-# Feature Importance
-
-# In[12]:
+# In[23]:
 
 
 #fill NaN values with -1 and encode object columns 
@@ -181,7 +172,13 @@ for x in prop.columns:
 train = pd.merge(train, prop, on='parcelid', how='left')
 
 
-# In[13]:
+# In[ ]:
+
+
+## Feature Importance by Random Forest and Xgboost
+
+
+# In[24]:
 
 
 for c in train[['transactiondate', 'hashottuborspa', 'propertycountylandusecode', 'propertyzoningdesc', 'fireplaceflag', 'taxdelinquencyflag']]:
@@ -193,29 +190,29 @@ x_train = train.drop(['parcelid', 'logerror', 'transactiondate'], axis=1)
 y_train = train['logerror']
 
 
-# In[14]:
+# In[25]:
 
 
 rf = RandomForestRegressor(n_estimators=30, max_features=None)
 rf.fit(x_train, y_train);
 
 
-# In[15]:
+# In[34]:
 
 
 rf_importance = rf.feature_importances_
 rf_importance_df = pd.DataFrame()
 rf_importance_df['features'] = x_train.columns
 rf_importance_df['importance'] = rf_importance
-print(rf_importance_df.head());
+rf_importance_df.head();
 
 
-# In[16]:
+# In[35]:
 
 
 rf_importance_df.sort_values('importance', axis=0, inplace=True, ascending=False)
 
-print(rf_importance_df.head());
+rf_importance_df.head();
 
 
 # In[14]:
@@ -227,29 +224,28 @@ ax.set(xlabel="Importance", ylabel="Feature Name", title="Feature Importances")
 plt.show()
 
 
-# In[17]:
+# In[28]:
 
 
 etr = ExtraTreesRegressor(n_estimators=25, max_depth=30, max_features=0.3, n_jobs=-1, random_state=0)
 etr.fit(x_train, y_train);
 
 
-# In[18]:
+# In[32]:
 
 
 etr_importance = etr.feature_importances_
 etr_importance_df = pd.DataFrame()
 etr_importance_df['features'] = x_train.columns
 etr_importance_df['importance'] = etr_importance
-print(etr_importance_df.head());
+etr_importance_df.head();
 
 
-# In[19]:
+# In[33]:
 
 
 etr_importance_df.sort_values('importance', axis=0, inplace=True, ascending=False)
-
-print(etr_importance_df.head());
+etr_importance_df.head();
 
 
 # In[18]:
@@ -369,22 +365,10 @@ plt.show()
 
 # In Progress
 
-# # Bibliography
+# In[ ]:
 
-# Couzin-Frankel, J. 2010. “Cancer Research. As Questions Grow, Duke Halts Trials, Launches Investigation.” Science 329 (5992): 614–15. 
-# 
-# Hunter, J. D. 2007. “Matplotlib: A 2D Graphics Environment.” Computing In Science & Engineering 9 (3): 90–95.
-# 
-# McKinney, W. 2010. “Data Structures for Statistical Computing in Python.” In Proceedings of the 9th Python in Science Conference, edited by S. J. van der Walt and K. J. Millman. Austin, Texas.
-# 
-# Pedregosa, Fabian, Gaël Varoquaux, Alexandre Gramfort, Vincent Michel, Bertrand Thirion, Olivier Grisel, Mathieu Blondel, et al. 2011. “Scikit-Learn: Machine Learning in Python.” Journal of Machine Learning Research 12 (Oct): 2825–30.
-# 
-# Pérez, F., and B. E. Granger. 2007. “IPython: A System for Interactive Scientific Computing.” Computing in Science & Engineering 9 (3): 21–29.
-# 
-# Pérez, F., B. E. Granger, and J. D. Hunter. 2011. “Python: An Ecosystem for Scientific Computing.” Computing in Science & Engineering 13 (2): 13–21.
-# 
-# Van der Walt, S., S. C. Colbert, and G. Varoquaux. 2011. “The NumPy Array: A Structure for Efficient Numerical Computation.” Computing in Science & Engineering 13 (2): 22–30.
-# 
-# Waskom, M, O Botvinnik, P Hobson, J Warmenhoven, JB Cole, Y Halchenko, J Vanderplas, et al. 2014. Seaborn: Statistical Data Visualization. Stanford, California.
+
+# Bibliography is added in post-processing
+
 
 # <div class="cite2c-biblio"></div>

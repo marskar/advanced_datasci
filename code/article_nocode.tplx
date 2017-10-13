@@ -7,12 +7,12 @@
             \author{((( nb.metadata["latex_metadata"]["author"] )))}
         ((*- endif *))
     ((*- else -*))
-        \author{Julius C. F. Schulz}
+        \author{Martin Skarzynski}
     ((*- endif *))
 
     ((( super() )))
 ((* endblock maketitle *))
 
 ((* block bibliography *))
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 ((* endblock bibliography *))
