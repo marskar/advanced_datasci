@@ -1,0 +1,42 @@
+((*- extends 'latex_nocode.tplx' -*))
+
+((* block docclass *))
+\documentclass[reprint, floatfix, groupaddress, prb]{revtex4-1}
+((* endblock docclass *))
+
+((* block packages *))
+    \usepackage{placeins}
+
+    \AtBeginDocument{
+        \heavyrulewidth=.08em
+        \lightrulewidth=.05em
+        \cmidrulewidth=.03em
+        \belowrulesep=.65ex
+        \belowbottomsep=0pt
+        \aboverulesep=.4ex
+        \abovetopsep=0pt
+        \cmidrulesep=\doublerulesep
+        \cmidrulekern=.5em
+        \defaultaddspace=.5em
+    }
+((( super() )))
+((* endblock packages *))
+
+
+% Author must be seperated from parent class due to affiliations
+((* block maketitle *))
+    ((*- if nb.metadata["latex_metadata"]: -*))
+        ((*- if nb.metadata["latex_metadata"]["author"]: -*))
+            \author{((( nb.metadata["latex_metadata"]["author"] )))}
+        ((*- endif *))
+    ((*- else -*))
+        \author{Julius C. F. Schulz}
+    ((*- endif *))
+    ((*- if nb.metadata["latex_metadata"]: -*))
+        ((*- if nb.metadata["latex_metadata"]["affiliation"]: -*))
+            \affiliation{((( nb.metadata["latex_metadata"]["affiliation"] )))}
+        ((*- endif *))
+    ((*- endif *))
+
+    ((( super() )))
+((* endblock maketitle *))

@@ -1,19 +1,31 @@
 #!/bin/bash
-# move html & md to report folder
+
+# create script file
+jupyter nbconvert --to script zillow_MWS.ipynb
+
+# create md, html and pdf output files
+jupyter nbconvert --to markdown --no-prompt --MarkdownExporter.exclude_input=True zillow_MWS.ipynb
+
+jupyter nbconvert --to HTML --no-prompt --HTMLExporter.exclude_input=True zillow_MWS.ipynb
+
+jupyter nbconvert --to pdf --no-prompt --PDFExporter.exclude_input=True zillow_MWS.ipynb
+
+# copy notebook & script to draft folder
+cp ./zillow_MWS.py ../draft/
+cp ./zillow_MWS.ipynb ../draft/
+
+# move PDF file to and report folder
+cp ./zillow_MWS.pdf ../draft/
+mv ./zillow_MWS.pdf ../report/
+
+# move HTML & md files to report folder
 mv ./zillow_MWS.html ../report/
 mv ./zillow_MWS.md ../report/
-
-# move report files
 rm -rf ../report/zillow_MWS_files/
 mv ./zillow_MWS_files/ ../report/
 
 # copy README to draft
 cp ../README.md ../draft/
-
-# create pdf and move to draft and report
-jupyter nbconvert --to pdf --no-prompt --PDFexporter.exclude_input=True zillow_MWS.ipynb
-cp ./zillow_MWS.pdf ../draft/
-mv ./zillow_MWS.pdf ../report/
 
 # push changes in draft folder to 'https://github.com/adv-datasci/draft-report-marskar' repo
 cd ../draft

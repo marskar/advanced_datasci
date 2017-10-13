@@ -1,67 +1,52 @@
 
 # coding: utf-8
 
-# # Zillow prize data analysis report
-
-# In[1]:
-
-
-from datetime import datetime
-d = datetime.now().date()
-t = datetime.now().strftime('%H:%M:%S')
-print("This report was last updated on", d, "at", t)
-
-
-# ## Introduction
+# # Introduction
 
 # The [Zillow Prize](https://www.zillow.com/promo/Zillow-prize/) is a [Kaggle competition](https://www.kaggle.com/c/zillow-prize-1) that aims to inspire data scientists around the world to improve the accuracy of the Zillow "Zestimate" statistical and machine learning models. 
 # 
 # My goal is to compete for the Zillow prize and write up my results.
 
-# ## Methods
+# # Methods
 
-# ### Data
+# ## Data
 
 # The data were obtained from [Kaggle website](https://www.kaggle.com/c/zillow-prize-1/data) and consist of the following files:
-# - `properties_2016.csv.zip`
-# - `properties_2017.csv.zip`
-# - `sample_submission.csv`
-# - `train_2016_v2.csv.zip`
-# - `train_2017.csv.zip`
-# - `zillow_data_dictionary.xlsx` 
+# - properties_2016.csv.zip
+# - properties_2017.csv.zip
+# - sample_submission.csv
+# - train_2016_v2.csv.zip
+# - train_2017.csv.zip
+# - zillow_data_dictionary.xlsx
+# 
 # The `zillow_data_dictionary.xlsx` is a code book that explains the data.
 # This data will be made available on [figshare](https://figshare.com/) to provide an additional source if the [Kaggle site data](https://www.kaggle.com/c/zillow-prize-1/data) become unavailable.
 
-# ### Analysis
+# ## Analysis
 
-# Data analysis was done in Jupyter Notebook (Pérez and Granger 2007)<cite data-cite="5251998/SH25XT8L"></cite> Integrated Development Environment using the Python language (Pérez, Granger, and Hunter 2011)<cite data-cite="5251998/FGTD82L2"></cite> and a number of software packages:
+# Data analysis was done in Jupyter Notebook (Pérez and Granger 2007) Integrated Development Environment using the Python language (Pérez, Granger, and Hunter 2011) and a number of software packages:
 # 
-# - NumPy (van der Walt, Colbert, and Varoquaux 2011)<cite data-cite="5251998/3SWILWGR"></cite>
+# - NumPy (van der Walt, Colbert, and Varoquaux 2011)
 # 
-# - pandas (McKinney 2010)<cite data-cite="5251998/K3NZPGU9"></cite>
+# - pandas (McKinney 2010)
 # 
-# - scikit-learn (Pedregosa et al. 2011)<cite data-cite="5251998/SBYLEUVD"></cite>
+# - scikit-learn (Pedregosa et al. 2011)
 # 
 
-# ### Visualization
+# ## Visualization
 
 # The following packages were used to visualize the data:
-# 
-# - Matplotlib (Hunter 2007)<cite data-cite="5251998/WP5LZ6AZ"></cite>
-# 
-# - Seaborn (Waskom et al. 2014)<cite data-cite="5251998/NSFX6VMN"></cite>
-# 
+# - Matplotlib (Hunter 2007)
+# - Seaborn (Waskom et al. 2014)
 # - r-ggplot2
-# 
 # - r-cowplot
 # 
 # The use of `R` code and packages in a `Python` environment is possible through the use of the `Rpy2` package.
 
-# ### Prediction
+# ## Prediction
 
 # Machine learning prediction was done using the following packages:
-# 
-# - scikit-learn (Pedregosa et al. 2011)<cite data-cite="5251998/SBYLEUVD"></cite>
+# - scikit-learn (Pedregosa et al. 2011)
 # - xgboost
 # - r-caret 
 
@@ -82,75 +67,101 @@ print("This report was last updated on", d, "at", t)
 # It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python (a modified version of this docker image will be made available as part of my project to ensure reproducibility).
 # For example, here's several helpful packages to load in 
 
-# ## Results
+# # Results
 
-# ### Import Libraries and Data
-
-# Input data files are available in the "../input/" directory.
+# ## Import Libraries and Data
 
 # Any results I write to the current directory are saved as output.
 
-# In[2]:
+# In[3]:
 
 
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import matplotlib.pyplot as plt # data visualization
-import datetime as dt
 import seaborn as sns
 import xgboost as xgb
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestRegressor
-from sklearn import ensemble
+from sklearn.ensemble import ExtraTreesRegressor
+
+
+# In[26]:
+
+
+# Set plot parameters
+from IPython.display import set_matplotlib_formats
+set_matplotlib_formats('pdf', 'png')
+plt.rcParams['savefig.dpi'] = 300
+
+plt.rcParams['figure.autolayout'] = False
+plt.rcParams['figure.figsize'] = 10, 6
+plt.rcParams['axes.labelsize'] = 18
+plt.rcParams['axes.titlesize'] = 20
+plt.rcParams['font.size'] = 16
+plt.rcParams['lines.linewidth'] = 2.0
+plt.rcParams['lines.markersize'] = 8
+plt.rcParams['legend.fontsize'] = 14
+
+plt.rcParams['text.usetex'] = True
+plt.rcParams['font.family'] = "serif"
+plt.rcParams['font.serif'] = "cm"
+plt.rcParams['text.latex.preamble'] = "\usepackage{subdepth}, \usepackage{type1cm}"
 get_ipython().run_line_magic('matplotlib', 'inline')
 ### Seaborn style
 sns.set_style("whitegrid")
 
 
-# In[3]:
+# In[ ]:
 
 
-prop = pd.read_csv("../input/properties_2016.csv")
-prop.shape
-
-
-# In[4]:
-
-
-### ... check for NaNs
-nan = prop.isnull().sum()/len(prop)*100
-nan
-
-
-# In[5]:
-
-
-### Plotting NaN counts
-nan_sorted = nan.sort_values(ascending=False).to_frame().reset_index()
-nan_sorted.columns = ['Column', 'Number of NaNs']
+#Input data files are available in the "../input/" directory, on Kaggle and this repo.
+prop = pd.read_csv("../input/properties_2016.csv", low_memory=False)
+prop.shape;
 
 
 # In[6]:
 
 
-fig, ax = plt.subplots(figsize=(12, 25))
-sns.barplot(x="Number of NaNs", y="Column", data=nan_sorted, color='Blue', ax=ax)
-ax.set(xlabel="Number of NaNs", ylabel="", title="Total Number of NaNs in each column")
-plt.show()
+### ... check for NaNs
+nan = prop.isnull().sum()/len(prop)*100
 
-
-# There are several columns which have a very high proportion of missing values. It may be worth analysing these more closely.
-
-# #### Feature Importance by Random Forest
 
 # In[7]:
 
 
-train = pd.read_csv("../input/train_2016_v2.csv", parse_dates=["transactiondate"])
-train.shape
+### Plotting NaN counts
+nan_sorted = nan.sort_values(ascending=False).to_frame().reset_index()
+nan_sorted.columns = ['Column', 'percentNaN']
 
 
 # In[8]:
+
+
+nan_sorted.head();
+
+
+# In[9]:
+
+
+fig, ax = plt.subplots(figsize=(6, 12.5), dpi=300)
+sns.barplot(x="percentNaN", y="Column", data=nan_sorted, color='Blue', ax=ax)
+ax.set(xlabel="Missing Values (%)", ylabel="", title="Percent Missing Values in each column")
+plt.show()
+
+
+# There are several columns which have a very high proportion of missing values. I will remove features that have more than 80% missing values.
+
+# #### Feature Importance by Random Forest
+
+# In[10]:
+
+
+train = pd.read_csv("../input/train_2016_v2.csv", parse_dates=["transactiondate"])
+train.shape;
+
+
+# In[11]:
 
 
 train['transaction_month'] = pd.DatetimeIndex(train['transactiondate']).month
@@ -159,7 +170,7 @@ train.sort_values('transaction_month', axis=0, ascending=True, inplace=True)
 
 # Feature Importance
 
-# In[9]:
+# In[12]:
 
 
 #fill NaN values with -1 and encode object columns 
@@ -170,7 +181,7 @@ for x in prop.columns:
 train = pd.merge(train, prop, on='parcelid', how='left')
 
 
-# In[10]:
+# In[13]:
 
 
 for c in train[['transactiondate', 'hashottuborspa', 'propertycountylandusecode', 'propertyzoningdesc', 'fireplaceflag', 'taxdelinquencyflag']]:
@@ -182,29 +193,29 @@ x_train = train.drop(['parcelid', 'logerror', 'transactiondate'], axis=1)
 y_train = train['logerror']
 
 
-# In[11]:
+# In[14]:
 
 
 rf = RandomForestRegressor(n_estimators=30, max_features=None)
-rf.fit(x_train, y_train)
+rf.fit(x_train, y_train);
 
 
-# In[12]:
+# In[15]:
 
 
 rf_importance = rf.feature_importances_
 rf_importance_df = pd.DataFrame()
 rf_importance_df['features'] = x_train.columns
 rf_importance_df['importance'] = rf_importance
-print(rf_importance_df.head())
+print(rf_importance_df.head());
 
 
-# In[13]:
+# In[16]:
 
 
 rf_importance_df.sort_values('importance', axis=0, inplace=True, ascending=False)
 
-print(rf_importance_df.head())
+print(rf_importance_df.head());
 
 
 # In[14]:
@@ -216,29 +227,29 @@ ax.set(xlabel="Importance", ylabel="Feature Name", title="Feature Importances")
 plt.show()
 
 
-# In[15]:
+# In[17]:
 
 
-etr = ensemble.ExtraTreesRegressor(n_estimators=25, max_depth=30, max_features=0.3, n_jobs=-1, random_state=0)
-etr.fit(x_train, y_train)
+etr = ExtraTreesRegressor(n_estimators=25, max_depth=30, max_features=0.3, n_jobs=-1, random_state=0)
+etr.fit(x_train, y_train);
 
 
-# In[16]:
+# In[18]:
 
 
 etr_importance = etr.feature_importances_
 etr_importance_df = pd.DataFrame()
 etr_importance_df['features'] = x_train.columns
 etr_importance_df['importance'] = etr_importance
-print(etr_importance_df.head())
+print(etr_importance_df.head());
 
 
-# In[17]:
+# In[19]:
 
 
 etr_importance_df.sort_values('importance', axis=0, inplace=True, ascending=False)
 
-print(etr_importance_df.head())
+print(etr_importance_df.head());
 
 
 # In[18]:
@@ -354,11 +365,11 @@ f.subplots_adjust(hspace=0.3)
 plt.show()
 
 
-# ## Conclusions
+# # Conclusions
 
 # In Progress
 
-# ## Bibliography
+# # Bibliography
 
 # Couzin-Frankel, J. 2010. “Cancer Research. As Questions Grow, Duke Halts Trials, Launches Investigation.” Science 329 (5992): 614–15. 
 # 

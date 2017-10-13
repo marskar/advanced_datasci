@@ -82,14 +82,6 @@ Input data files are available in the "../input/" directory.
 
 Any results I write to the current directory are saved as output.
 
-    /Users/marskar/anaconda3/lib/python3.6/site-packages/sklearn/cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
-      "This module will be removed in 0.20.", DeprecationWarning)
-
-
-    /Users/marskar/anaconda3/lib/python3.6/site-packages/IPython/core/interactiveshell.py:2728: DtypeWarning: Columns (22,32,34,49,55) have mixed types. Specify dtype option on import or set low_memory=False.
-      interactivity=interactivity, compiler=compiler, result=result)
-
-
 
 
 
@@ -100,73 +92,65 @@ Any results I write to the current directory are saved as output.
 
 
 
-    parcelid                         0.000000
-    airconditioningtypeid           72.815410
-    architecturalstyletypeid        99.796966
-    basementsqft                    99.945465
-    bathroomcnt                      0.383959
-    bedroomcnt                       0.383557
-    buildingclasstypeid             99.576949
-    buildingqualitytypeid           35.063749
-    calculatedbathnbr                4.318346
-    decktypeid                      99.427311
-    finishedfloor1squarefeet        93.209304
-    calculatedfinishedsquarefeet     1.861339
-    finishedsquarefeet12             9.246664
-    finishedsquarefeet13            99.743000
-    finishedsquarefeet15            93.608572
-    finishedsquarefeet50            93.209304
-    finishedsquarefeet6             99.263002
-    fips                             0.383121
-    fireplacecnt                    89.527160
-    fullbathcnt                      4.318346
-    garagecarcnt                    70.411967
-    garagetotalsqft                 70.411967
-    hashottuborspa                  97.688141
-    heatingorsystemtypeid           39.488453
-    latitude                         0.383121
-    longitude                        0.383121
-    lotsizesquarefeet                9.248875
-    poolcnt                         82.663438
-    poolsizesum                     99.063385
-    pooltypeid10                    98.762603
-    pooltypeid2                     98.925539
-    pooltypeid7                     83.737899
-    propertycountylandusecode        0.411260
-    propertylandusetypeid            0.383121
-    propertyzoningdesc              33.719090
-    rawcensustractandblock           0.383121
-    regionidcity                     2.105207
-    regionidcounty                   0.383121
-    regionidneighborhood            61.262381
-    regionidzip                      0.468308
-    roomcnt                          0.384394
-    storytypeid                     99.945599
-    threequarterbathnbr             89.560859
-    typeconstructiontypeid          99.773986
-    unitcnt                         33.757244
-    yardbuildingsqft17              97.308236
-    yardbuildingsqft26              99.911330
-    yearbuilt                        2.007492
-    numberofstories                 77.151778
-    fireplaceflag                   99.827048
-    structuretaxvaluedollarcnt       1.841809
-    taxvaluedollarcnt                1.425357
-    assessmentyear                   0.383188
-    landtaxvaluedollarcnt            2.268947
-    taxamount                        1.046825
-    taxdelinquencyflag              98.108613
-    taxdelinquencyyear              98.108546
-    censustractandblock              2.516601
-    dtype: float64
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Column</th>
+      <th>percentNaN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>storytypeid</td>
+      <td>99.945599</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>basementsqft</td>
+      <td>99.945465</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>yardbuildingsqft26</td>
+      <td>99.911330</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>fireplaceflag</td>
+      <td>99.827048</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>architecturalstyletypeid</td>
+      <td>99.796966</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
 
 
-![png](zillow_MWS_files/zillow_MWS_24_0.png)
+![png](zillow_MWS_files/zillow_MWS_25_0.png)
 
 
-There are several columns which have a very high proportion of missing values. It may be worth analysing these more closely.
+There are several columns which have a very high proportion of missing values. I will remove features that have more than 80% missing values.
 
 #### Feature Importance by Random Forest
 
@@ -208,7 +192,7 @@ Feature Importance
 
 
 
-![png](zillow_MWS_files/zillow_MWS_35_0.png)
+![png](zillow_MWS_files/zillow_MWS_36_0.png)
 
 
 
@@ -239,11 +223,11 @@ Feature Importance
 
 
 
-![png](zillow_MWS_files/zillow_MWS_39_0.png)
+![png](zillow_MWS_files/zillow_MWS_40_0.png)
 
 
 
-![png](zillow_MWS_files/zillow_MWS_41_0.png)
+![png](zillow_MWS_files/zillow_MWS_42_0.png)
 
 
 ## Conclusions
